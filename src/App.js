@@ -4,22 +4,24 @@ import {
   Routes,
   Route,
   Link,
-  useParams,
 } from "react-router-dom";
 // CSS
 import "./App.css";
 import "tachyons";
 // JS
-import { Main } from "./components";
+import { Navbar, Main, About, Footer } from "./components";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Link></Link>
-        <Routes>
-          <Route path="/" exact element={<Main />} />
-        </Routes>
+        <Navbar />
+          <Link></Link>
+          <Routes>
+            <Route path="/" exact element={<Main />} />
+          </Routes>
+         <About />
+        <Footer />
       </BrowserRouter>
     </div>
   );

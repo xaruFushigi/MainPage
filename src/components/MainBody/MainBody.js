@@ -1,8 +1,9 @@
 import React from "react";
+import "./MainBody.css";
 
 const Main = () => {
   return (
-    <div>
+    <div className="outline">
       <div className="flex flex-column">
         <div className="bg-red">First</div>
         <div className="bg-yellow">Second</div>
