@@ -1,73 +1,103 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { MyContext } from "../../Context/ContextProvider";
+// CSS
 import "./Navbar.css";
+// animations
 import ParticlesBg from "particles-bg";
-import Fade from '@mui/material/Fade';
+// icons
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import MenuIcon from "@mui/icons-material/Menu";
 const Navbar = () => {
-    return(
-        <div className="outline">
-          {/* <ParticlesBg bg={true} type="custom" color="#00F" num={1} /> */}
-            <div className="home flex justify-center">
-                <ul id="nav" className="nav flex flex-row">
-                    <li className="current ml2">
-                        <a className="smoothscroll" href="#home">
-                            Home
-                        </a>
-                    </li>
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  let navigate = useNavigate();
+  const { handleScroll, activeSection } = useContext(MyContext);
+  // open close Navigation Bar via icon
+  const toggleIsNavOpenOnClick = () => {
+    setIsNavOpen((isNavOpen) => !isNavOpen);
+  };
 
-                    <li className="ml2">
-                        <a className="smoothscroll" href="#about">
-                            About
-                        </a>
-                    </li>
+  return (
+    <div className="">
+      <div className={`navigation ${isNavOpen ? "open" : ""}`}>
+        <button className="navigation__toggle" onClick={toggleIsNavOpenOnClick}>
+          {isNavOpen ? <MenuIcon /> : <MenuOpenIcon />}
+        </button>
 
-                    <li className="ml2">
-                        <a className="smoothscroll" href="#portfolio">
-                            Works
-                        </a>
-                    </li>
+        <div className="navigation__list-container-right-side">
+          <ul className="navigation__list">
+            <li className={`navigation__item`}>
+              <a
+                className={`navigation__link ${
+                  activeSection === "home" ? "active" : ""
+                }`}
+                href="#home"
+                onClick={() => handleScroll("home")}
+              >
+                Home
+              </a>
+            </li>
 
-                    <li className="ml2">
-                        <a className="smoothscroll" href="#contact">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <li className={`navigation__item `}>
+              <a
+                className={`navigation__link ${
+                  activeSection === "about" ? "active" : ""
+                }`}
+                href="#about"
+                onClick={() => handleScroll("about")}
+              >
+                About
+              </a>
+            </li>
 
-            <div className="row banner" >
-                <div className="banner text">
-                    <Fade bottom >
-                        <h1 className="responsive-headline">name</h1>
-                    </Fade>
-                    s
-                    <Fade bottom duration={1200} >
-                        <h3>description</h3>
-                    </Fade>
-                    <hr />
-                    d
-                    <Fade bottom duration={2000}>
-                        <ul className="social">
-                            <a href="" className="button btn project-btn">
-                                <i className="fa fa-book"></i> Project
-                            </a>
-                            <a href="" className="button btn github-btn">
-                                <i className="fa fa-github"></i> Github
-                            </a>
-                        </ul>
-                    </Fade>
+            <li className={`navigation__item`}>
+              <a
+                className={`navigation__link ${
+                  activeSection === "works" ? "active" : ""
+                }`}
+                href="#works"
+                onClick={() => handleScroll("works")}
+              >
+                Works
+              </a>
+            </li>
 
-                    <p className="scrolldown">
-                        <a className="smoothscroll" href="#about">
-                            <i className="icon-down-circle"/>
-                        </a>
-                    </p>
-
-                </div>
-
-            </div>
-
+            <li className={`navigation__item`}>
+              <a
+                className={`navigation__link ${
+                  activeSection === "contact" ? "active" : ""
+                }`}
+                href="#contact"
+                onClick={() => handleScroll("contact")}
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
-    );
-}
+
+        <div className="navigation__list-container-left-side">
+          <ul className="navigation__list-container-left-side-link">
+            <li className="white pl2 pr2">
+              <Link
+                to="/register"
+                className="pr2 navigation__list-container-left-side-link-item"
+              >
+                Register
+              </Link>
+              <Link
+                to="/login"
+                className="navigation__list-container-left-side-link-item"
+              >
+                LogIn
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <ParticlesBg bg={true} type="custom" color="#00F" num={1} />
+      </div>
+    </div>
+  );
+};
 
 export default Navbar;

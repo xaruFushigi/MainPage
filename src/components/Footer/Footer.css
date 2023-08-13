@@ -1,0 +1,42 @@
+.footer {
+  background-color: #0f0f0f;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  bottom: 0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  width: 100vw; /* 100% of viewport width */
+  height: 15vh; /* 100% of viewport height */
+}
+
+.footer__link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%; /* Set a fixed width for the container */
+  height: 32px; /* Set a fixed height for the container */
+}
+
+.icon {
+  font-size: 24px; /* Default size */
+  color: #333; /* Default color */
+  transition: all 1s; /* Add a smooth transition effect for all properties */
+}
+
+.icon:hover {
+  font-size: 48px; /* Size to change to on hover */
+  color: #ffe; /* Color to change to on hover */
+  transition: all 0.8s;
+}
+
+.icon:not(hover) {
+  font-size: 40px; /* Size to change to on hover */
+  color: #333; /* Color to change to on hover */
+  transition: all 0.6s;
+}
+
+.footer__copyright {
+  margin: 25px;
+}

@@ -1,0 +1,39 @@
+.MainBody--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* 100% of viewport width */
+  height: 100vh; /* 100% of viewport height */
+}
+
+.MainBody__body--title {
+}
+
+.MainBody__body--text {
+}
+
+.MainBody__body--GitHubButton {
+  border-radius: 7px;
+  padding: 6%;
+  width: 180px;
+  border: transparent;
+  cursor: pointer;
+  background: #3d4145;
+}
+
+.MainBody__body--GitHubButton--link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* .MainBody__footer--scrolldown {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 10px;
+  font-size: large;
+  cursor: pointer;
+} */

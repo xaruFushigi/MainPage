@@ -1,7 +1,119 @@
-a {
-    text-decoration: none;
+/* Base styles for the navigation block */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: end;
+  background-color: #0f0f0f; /* */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
-ul {
-    list-style-type: none;
+/* Styles for the navigation toggle button */
+.navigation__toggle {
+  display: none; /* Hide toggle button by default */
+  /* Styles for the toggle button icon */
+}
+
+.navigation__list-container-right-side {
+  overflow: hidden; /* Ensure the rounded corners are visible */
+  width: 100%;
+}
+
+.navigation__list-container-right-side {
+  display: flex;
+  justify-content: start;
+  overflow: hidden;
+}
+
+.navigation__list-container-left-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 100%;
+}
+.navigation__list-container-left-side-link {
+  text-decoration: none;
+  list-style-type: none;
+  color: white;
+}
+/* Styles for the navigation list */
+.navigation__list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Styles for navigation items */
+.navigation__item {
+  /* Individual navigation item styles */
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  font-weight: 500;
+}
+
+/* Styles for navigation links */
+.navigation__link {
+  padding-left: 10px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 40px; /* Set the line height to match the navigation bar's height. help with navbar not increasing in size when font size increases */
+  transition: font-size 0.8s ease-in-out;
+  /* Link styles */
+}
+
+.navigation__link:hover {
+  font-size: 24px;
+}
+
+.navigation__link.active {
+  font-size: 24px; /* Set the desired font size */
+  transition: font-size 0.3s ease-in-out;
+}
+
+.navigation__list-container-left-side-link-item {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Mobile-first styles */
+@media (max-width: 768px) {
+  .navigation__list {
+    display: none; /* Hide the navigation list on mobile */
+    flex-direction: column; /* Stack navigation items vertically */
+    padding-right: 25px;
+    align-items: end;
+    gap: 5px;
+    background-color: #333;
+    width: 100%;
+    position: absolute;
+    top: 4%; /* Adjust this value based on your design. Space between menu button and link */
+    left: 0;
+    z-index: 1;
+  }
+
+  .navigation__item {
+    margin: 10px 0;
+  }
+
+  .navigation__toggle {
+    display: block;
+    /* display: block; /* Show the toggle button on mobile */
+    /* Toggle button styles */
+  }
+
+  /* Add styles to show/hide the navigation list when toggle is clicked */
+  .navigation.open .navigation__list {
+    display: flex;
+  }
+
+  .navigation__link {
+    color: white;
+    text-decoration: none;
+  }
 }

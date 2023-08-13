@@ -1,0 +1,63 @@
+.About--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* 100% of viewport width */
+  height: 100vh; /* 100% of viewport height */
+}
+
+.about__about-me-profile-picture {
+  border-radius: 50%;
+  width: 30%;
+  height: 45%;
+}
+
+.about__about-me-and-contact-details {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.about_about-me-section-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+}
+
+.about__about-me-section-text-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
+}
+
+.about__about-me-section-text {
+  display: flex;
+  justify-content: start;
+  text-align: left;
+  padding: 15px 15px 15px 15px;
+}
+
+.about__contact-details-section-container {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.about__contact-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.about__contact-details-details {
+  padding-left: 50px;
+}
+
+.about__contact-details-link {
+  display: flex;
+  flex-direction: column;
+}
