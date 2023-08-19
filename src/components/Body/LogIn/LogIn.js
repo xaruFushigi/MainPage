@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 //
 import "./LogIn.css";
 // Formik and Yup related imports for form
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+//
+import { MyContext } from "../../../Context/ContextProvider";
 
 const LogIn = () => {
+  //  const {} = useContext(MyContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
   let navigate = useNavigate();
   // initial values of formik
   const initialValues = {
@@ -19,9 +23,9 @@ const LogIn = () => {
     password: Yup.string().min(3).max(20).required(),
   });
   //Log In button
-  const onSubmitRegisterButton = async (event) => {
+  const onSubmitLogInButton = async (event) => {
     try {
-      const response = await fetch(`http://localhost:10000/auth/register`, {
+      const response = await fetch(`http://localhost:10000/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -29,13 +33,19 @@ const LogIn = () => {
           password: event.password,
         }),
         mode: "cors",
+        credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        navigate("/login");
+        localStorage.setItem("accessToken", data.accessToken);
+        setIsLoggedIn({
+          username: data.username,
+          id: data.id,
+          statusLoggedIn: true,
+        });
+        navigate("/");
       } else {
-        throw new Error("failed to fetch");
+        setIsLoggedIn({ ...isLoggedIn, statusLoggedIn: false });
       }
     } catch (error) {
       console.log(error);
@@ -47,7 +57,7 @@ const LogIn = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={onSubmitRegisterButton}
+          onSubmit={onSubmitLogInButton}
         >
           <Form className="login__formContainer">
             <label>Username :</label>
@@ -69,7 +79,7 @@ const LogIn = () => {
               placeholder="Password goes here"
             />
 
-            <button type="submit">Register</button>
+            <button type="submit">Log In</button>
           </Form>
         </Formik>
       </div>

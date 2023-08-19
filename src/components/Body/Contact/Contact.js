@@ -1,7 +1,10 @@
 import React from "react";
+// Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+// CSS
 import "./Contact.css";
+// icons
 import EmailIcon from "@mui/icons-material/Email";
 import BadgeIcon from "@mui/icons-material/Badge";
 import SubjectIcon from "@mui/icons-material/Subject";

@@ -9,8 +9,8 @@
 
 .about__about-me-profile-picture {
   border-radius: 50%;
-  width: 30%;
-  height: 45%;
+  width: 250px;
+  height: 250px;
 }
 
 .about__about-me-and-contact-details {
@@ -21,8 +21,8 @@
 
 .about_about-me-section-container {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -34,14 +34,14 @@
 
 .about__about-me-section-text {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   text-align: left;
   padding: 15px 15px 15px 15px;
 }
 
 .about__contact-details-section-container {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
 }
 

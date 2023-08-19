@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // CSS
 import "./App.css";
 import "tachyons";
-// JS
-import { Navbar, Body, Footer, Register, LogIn } from "./components";
+// JSå
+import {
+  Navbar,
+  Body,
+  Footer,
+  Register,
+  Confirmation,
+  LogIn,
+} from "./components";
 
 function App() {
   return (
@@ -14,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Body />} />
           <Route path="/register" exact element={<Register />} />
+          <Route path="/confirmation" exact element={<Confirmation />} />
           <Route path="/login" exact element={<LogIn />} />
         </Routes>
         <Footer />

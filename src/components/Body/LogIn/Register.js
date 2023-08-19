@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const Register = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   // initial values of formik
   const initialValues = {
     firstname: "",
@@ -27,22 +27,22 @@ const Register = () => {
   //Log In button
   const onSubmitRegisterButton = async (event) => {
     try {
-      const response = await fetch(`http://localhost:10000/auth/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstname: event.firstname,
-          lastname: event.lastname,
-          username: event.username,
-          password: event.password,
-        }),
-        mode: "cors",
-      });
+      const response = await fetch(
+        "http://localhost:10000/auth/register/checkUserInfo",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: event.username,
+          }),
+          mode: "cors",
+        }
+      );
       if (response.ok) {
-        const data = await response.json();
-        navigate("/login");
+        navigate("/confirmation", { state: event }); // Pass user data as state
       } else {
-        throw new Error("failed to fetch");
+        const data = await response.json();
+        alert(data.error);
       }
     } catch (error) {
       console.log(error);

@@ -11,15 +11,30 @@ const Footer = () => {
     <div className="">
       <div className="footer outline" id="footer">
         <div className="footer__link">
-          <a className="pr2 pl2">
+          <a
+            className="pr2 pl2"
+            href="https://github.com/xaruFushigi"
+            target="_blank"
+            rel="noreferrer"
+          >
             <GitHubIcon className="icon" fontSize="large" />
           </a>
 
-          <a className="pr2 pl2">
+          <a
+            className="pr2 pl2"
+            href="https://github.com/xaruFushigi"
+            target="_blank"
+            rel="noreferrer"
+          >
             <GoogleIcon className="icon" fontSize="large" />
           </a>
 
-          <a className="pr2 pl2">
+          <a
+            className="pr2 pl2"
+            href="https://www.linkedin.com/in/bokhodir-ziedullaev-90b05b1b8/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <LinkedInIcon className="icon" fontSize="large" />
           </a>
         </div>
