@@ -9,6 +9,8 @@ import {
   Body,
   Footer,
   Register,
+  Profile,
+  AddProject,
   Confirmation,
   LogIn,
 } from "./components";
@@ -21,7 +23,13 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Body />} />
           <Route path="/register" exact element={<Register />} />
-          <Route path="/confirmation" exact element={<Confirmation />} />
+          <Route
+            path="/register/checkUserInfo"
+            exact
+            element={<Confirmation />}
+          />
+          <Route path="/profile/byId/:profileId" exact element={<Profile />} />
+          <Route path="/addProject" exact element={<AddProject />} />
           <Route path="/login" exact element={<LogIn />} />
         </Routes>
         <Footer />

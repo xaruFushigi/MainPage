@@ -1,0 +1,90 @@
+.addProject__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* 100% of viewport width */
+  height: 90vh; /* 90% of viewport height */
+}
+
+.addProject__formik-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  border: 5px solid #191919;
+  border-radius: 5px;
+}
+
+.addProject__formik-container button {
+  margin-top: 15px;
+  height: 40px;
+  border: none;
+  background-color: #333;
+  border-radius: 5px;
+  color: white;
+}
+
+.addProject__formik-container button:hover {
+  cursor: pointer;
+  background-color: #191919;
+}
+
+.textarea-input {
+  flex: 1;
+  height: auto; /* Remove the fixed height */
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 18px; /* Adjust font size as needed */
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  margin-bottom: 10px;
+}
+
+.input-row label {
+  font-size: 18px;
+  margin-bottom: 2px; /* Add margin to separate label and input */
+}
+
+.addProject__formik-container #inputAddProjectForm {
+  flex: 1;
+  height: 40px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.addProject__formik-input-error-message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  visibility: hidden;
+  height: 0px;
+}
+
+.error-message:not(:empty) {
+  visibility: visible;
+  height: auto;
+}
+
+.addProject__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  width: 50%;
+}

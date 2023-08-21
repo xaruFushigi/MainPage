@@ -110,7 +110,7 @@ const Navbar = () => {
                 <div className="flex flex-row items-center">
                   <Link
                     className="mr2 navigation__link"
-                    to={`/profile/${isLoggedIn.id}`}
+                    to={`/profile/byId/${isLoggedIn.id}`}
                   >
                     <AccountBoxIcon /> {isLoggedIn.username}
                   </Link>

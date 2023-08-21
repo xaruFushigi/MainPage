@@ -7,5 +7,8 @@ export { default as Footer } from "./Footer/Footer";
 // Register
 export { default as Register } from "./Body/LogIn/Register";
 export { default as Confirmation } from "./Body/LogIn/Confirmation";
+// Profile
+export { default as Profile } from "./Profile/Profile";
+export { default as AddProject } from "./AddProject/AddProject";
 // Login
 export { default as LogIn } from "./Body/LogIn/LogIn";

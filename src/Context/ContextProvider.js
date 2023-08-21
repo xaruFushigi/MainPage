@@ -111,6 +111,7 @@ const ContextProvider = (props) => {
     onClickLogOutButton,
     setIsLoggedIn,
     isLoggedIn,
+    getItemFromLocalStorage,
   };
   return (
     <div>
