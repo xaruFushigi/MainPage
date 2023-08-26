@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MyContext } from "./Context/ContextProvider";
 // CSS
 import "./App.css";
 import "tachyons";
@@ -16,8 +17,9 @@ import {
 } from "./components";
 
 function App() {
+  const { isDarkMode } = useContext(MyContext);
   return (
-    <div className="App">
+    <div className={`App app ${isDarkMode ? "" : "dark-mode"}`}>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -28,6 +30,7 @@ function App() {
             exact
             element={<Confirmation />}
           />
+          <Route path="/confirmation" exact element={<Confirmation />} />
           <Route path="/profile/byId/:profileId" exact element={<Profile />} />
           <Route path="/addProject" exact element={<AddProject />} />
           <Route path="/login" exact element={<LogIn />} />

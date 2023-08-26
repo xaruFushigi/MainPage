@@ -1,4 +1,5 @@
-.MainBody--container {
+/* DESKTOP VERSION */
+.MainBody-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,13 +8,17 @@
   height: 100vh; /* 100% of viewport height */
 }
 
-.MainBody__body--title {
+.MainBody__body-title {
+  display: flex;
+  justify-content: center;
 }
 
-.MainBody__body--text {
+.MainBody__body-text {
+  display: flex;
+  justify-content: center;
 }
 
-.MainBody__body--GitHubButton {
+.MainBody__body-GitHubButton {
   border-radius: 7px;
   padding: 6%;
   width: 180px;
@@ -22,7 +27,7 @@
   background: #3d4145;
 }
 
-.MainBody__body--GitHubButton--link {
+.MainBody__body--GitHubButton-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,3 +42,14 @@
   font-size: large;
   cursor: pointer;
 } */
+
+/* MOBILE VERSION */
+@media (max-width: 390px) {
+  .MainBody-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 390px;
+  }
+}

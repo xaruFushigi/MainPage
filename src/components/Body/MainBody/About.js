@@ -11,10 +11,10 @@ import profileImage from "./images/profile.png";
 
 const About = () => {
   return (
-    <div className="About--container section" id="about">
-      <div className="flex flex-row">
+    <div className="About-container section" id="about">
+      <div className="about-sub-container">
         {/* profile image */}
-        <div className="flex justify-end w-30">
+        <div className="about__about-me-profile-picture-container">
           <img
             className="about__about-me-profile-picture"
             src={profileImage}
@@ -27,7 +27,7 @@ const About = () => {
           <div className="about_about-me-section-container">
             <section className="about_about-me-section">
               <div className="about__about-me-section-text-container">
-                <h1 className="pr3">About Me</h1>
+                <h1 className="">About Me</h1>
                 <p className="about__about-me-section-text">
                   Use this bio section as your way of describing yourself and
                   saying what you do, what technologies you like <br /> to use

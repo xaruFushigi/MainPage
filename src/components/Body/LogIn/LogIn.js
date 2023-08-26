@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 //
 import { MyContext } from "../../../Context/ContextProvider";
+// icon
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 const LogIn = () => {
   //  const {} = useContext(MyContext);
@@ -43,7 +45,7 @@ const LogIn = () => {
           id: data.id,
           statusLoggedIn: true,
         });
-        navigate("/");
+        window.open("/", "_self");
       } else {
         setIsLoggedIn({ ...isLoggedIn, statusLoggedIn: false });
       }
@@ -52,7 +54,7 @@ const LogIn = () => {
     }
   };
   return (
-    <div className="login outline">
+    <div className="login">
       <div className="login-container">
         <Formik
           initialValues={initialValues}
@@ -79,7 +81,10 @@ const LogIn = () => {
               placeholder="Password goes here"
             />
 
-            <button type="submit">Log In</button>
+            <button type="submit">
+              {" "}
+              <LockOpenIcon /> Log In
+            </button>
           </Form>
         </Formik>
       </div>

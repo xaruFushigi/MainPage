@@ -9,7 +9,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 const Footer = () => {
   return (
     <div className="">
-      <div className="footer outline" id="footer">
+      <div className="footer" id="footer">
         <div className="footer__link">
           <a
             className="pr2 pl2"

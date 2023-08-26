@@ -119,12 +119,12 @@ const Confirmation = () => {
       >
         <Form className="confirmation__formContainer">
           {/* FirstName */}
-          <div className="confirmation__form-firstName outline">
-            <div className="flex flex-row items-center justify-start">
+          <div className="confirmation__form-firstName">
+            <div className="flex flex-row items-center justify-start confirmation__firstName">
               <label className="confirmation__form-label">First Name:</label>
               <div>
                 {!editingFirstName && ( //{/* Input field and P tag */}
-                  <div className="ml3 mr3">
+                  <div className="margin_space">
                     <p className={`confirmation__form-text`}>
                       {user.firstname}
                     </p>
@@ -134,7 +134,7 @@ const Confirmation = () => {
             </div>
 
             {/* Save and Cancel Buttons */}
-            <div className="flex flex-row items-center justify-start">
+            <div className="confirmation__preEdit">
               {editingFirstName ? (
                 <>
                   <Field
@@ -147,7 +147,7 @@ const Confirmation = () => {
                     } // Update editedValue when input changes
                   />
                   {/* Save button */}
-                  <div className="ml3 mr3">
+                  <div className="">
                     <button
                       className={`confirmation__button`}
                       onClick={(event) => {
@@ -158,7 +158,7 @@ const Confirmation = () => {
                     </button>
                   </div>
                   {/* Cancel button */}
-                  <div className="ml2 mr2">
+                  <div className="ml2">
                     <button
                       type="button"
                       className={`confirmation__button`}
@@ -169,7 +169,7 @@ const Confirmation = () => {
                   </div>
                 </>
               ) : (
-                <div className="ml5">
+                <div className="edit_button-container">
                   {/* Edit Button */}
                   <button
                     type="button"
@@ -183,12 +183,12 @@ const Confirmation = () => {
             </div>
           </div>
           {/* LastName */}
-          <div className="confirmation__form-firstName outline">
+          <div className="confirmation__form-firstName">
             <div className="flex flex-row items-center justify-start">
               <label className="confirmation__form-label">Last Name:</label>
               <div>
                 {!editingLastName && ( //{/* Input field and P tag */}
-                  <div className="ml3 mr3">
+                  <div className="margin_space">
                     <p className={`confirmation__form-text`}>{user.lastname}</p>
                   </div>
                 )}
@@ -196,7 +196,7 @@ const Confirmation = () => {
             </div>
 
             {/* Save and Cancel Buttons */}
-            <div className="flex flex-row items-center justify-start">
+            <div className="flex flex-row items-center justify-start confirmation__form-editing">
               {editingLastName ? (
                 <>
                   <Field
@@ -209,7 +209,7 @@ const Confirmation = () => {
                     } // Update editedValue when input changes
                   />
                   {/* Save button */}
-                  <div className="ml3 mr3">
+                  <div className="">
                     <button
                       className={`confirmation__button`}
                       onClick={(event) => {
@@ -220,7 +220,7 @@ const Confirmation = () => {
                     </button>
                   </div>
                   {/* Cancel button */}
-                  <div className="ml2 mr2">
+                  <div className="ml2">
                     <button
                       type="button"
                       className={`confirmation__button`}
@@ -231,7 +231,7 @@ const Confirmation = () => {
                   </div>
                 </>
               ) : (
-                <div className="ml5">
+                <div className="">
                   {/* Edit Button */}
                   <button
                     type="button"
@@ -245,12 +245,12 @@ const Confirmation = () => {
             </div>
           </div>
           {/* Username */}
-          <div className="confirmation__form-firstName outline">
+          <div className="confirmation__form-firstName">
             <div className="flex flex-row items-center justify-start">
-              <label className="confirmation__form-label">Username:</label>
+              <label className="confirmation__form-label">Uname:</label>
               <div>
                 {!editingUsername && ( //{/* Input field and P tag */}
-                  <div className="mr4 ml3">
+                  <div className="">
                     <p className={`confirmation__form-text`}>{user.username}</p>
                   </div>
                 )}
@@ -271,7 +271,7 @@ const Confirmation = () => {
                     } // Update editedValue when input changes
                   />
                   {/* Save button */}
-                  <div className="ml3 mr3">
+                  <div className="">
                     <button
                       className={`confirmation__button`}
                       onClick={(event) => {
@@ -282,7 +282,7 @@ const Confirmation = () => {
                     </button>
                   </div>
                   {/* Cancel button */}
-                  <div className="ml2 mr">
+                  <div className="ml2">
                     <button
                       type="button"
                       className={`confirmation__button`}
@@ -293,7 +293,7 @@ const Confirmation = () => {
                   </div>
                 </>
               ) : (
-                <div className="ml5">
+                <div className="margin_space">
                   {/* Edit Button */}
                   <button
                     type="button"
@@ -307,11 +307,11 @@ const Confirmation = () => {
             </div>
           </div>
           {/* Submit form*/}
-          <div className="w-100 flex justify-end">
+          <div className="confirmation__register-button-container">
             {/* Submit Registration Confirmation Button */}
             <button
               onClick={onSubmitRegisterButton}
-              className="confirmation__button"
+              className="confirmation__register-button"
             >
               <AppRegistrationIcon /> Register
             </button>

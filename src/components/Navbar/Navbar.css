@@ -1,3 +1,4 @@
+/* DESKTOP VERSION */
 /* Base styles for the navigation block */
 .navigation {
   display: flex;
@@ -9,6 +10,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
 }
@@ -18,37 +20,43 @@
   display: none; /* Hide toggle button by default */
   /* Styles for the toggle button icon */
 }
-
-.navigation__list-container-right-side {
-  overflow: hidden; /* Ensure the rounded corners are visible */
-  width: 100%;
-}
-
-.navigation__list-container-right-side {
-  display: flex;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
+/* LEFT SIDE OF NAVBAR */
 .navigation__list-container-left-side {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
 }
-.navigation__list-container-left-side-link {
-  text-decoration: none;
-  list-style-type: none;
-  color: white;
-}
-/* Styles for the navigation list */
-.navigation__list {
+.navigation__list-left-side-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   display: flex;
   gap: 20px;
 }
 
-/* Styles for navigation items */
+/* RIGHT SIDE OF NAVBAR */
+.navigation__list-container-right-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Styles for the navigation list */
+.navigation__list-right-side-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Styles for navigation items <li> */
 .navigation__item {
   /* Individual navigation item styles */
   display: flex;
@@ -57,7 +65,7 @@
   font-weight: 500;
 }
 
-/* Styles for navigation links */
+/* Styles for navigation links <a> */
 .navigation__link {
   display: flex;
   align-items: center;
@@ -72,58 +80,172 @@
 .navigation__link:hover {
   font-size: 24px;
 }
-
+/* increases size when clicked */
 .navigation__link.active {
   font-size: 24px; /* Set the desired font size */
   transition: font-size 0.3s ease-in-out;
 }
 
-.navigation__list-container-left-side-link-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+.navigation__logout-button {
   color: #fff;
-}
-
-.navigate__listcontainer-left-side-link-item-logout {
   background: transparent;
+  width: 140px;
+  height: 40px;
 }
 
-/* Mobile-first styles */
-@media (max-width: 768px) {
-  .navigation__list {
-    display: none; /* Hide the navigation list on mobile */
-    flex-direction: column; /* Stack navigation items vertically */
-    padding-right: 25px;
-    align-items: end;
-    gap: 5px;
-    background-color: #333;
-    width: 100%;
-    position: absolute;
-    top: 4%; /* Adjust this value based on your design. Space between menu button and link */
-    left: 0;
-    z-index: 1;
-  }
+.navigation__theme-changer-container {
+  border: 2px solid;
+  border-color: #fff;
+  border-radius: 25px;
+  perspective: 25px;
 
-  .navigation__item {
-    margin: 10px 0;
+  &.flipped {
+    .card-front {
+      transform: rotateY(180deg); /* Rotate the front side */
+    }
+    .card-back {
+      transform: rotateY(0); /* Rotate the back side */
+    }
   }
+}
 
-  .navigation__toggle {
-    display: block;
-    /* display: block; /* Show the toggle button on mobile */
-    /* Toggle button styles */
+.navigation__theme-changer {
+  border-radius: 25px;
+  width: 100%;
+  background-color: #0f0f0f;
+
+  &.flipped {
+    .card-front {
+      transform: rotateY(180deg); /* Rotate the front side */
+    }
+    .card-back {
+      transform: rotateY(0); /* Rotate the back side */
+    }
   }
+}
 
-  /* Add styles to show/hide the navigation list when toggle is clicked */
-  .navigation.open .navigation__list {
+.card-front,
+.card-back {
+  /* transition: transform 0.9s ease-in-out; */
+}
+
+.card-front {
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+  border-radius: 25px;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 390px) {
+  .navigation {
     display: flex;
+    justify-content: flex-end;
+  }
+  /* Base styles for the navigation block */
+  .navigation.open {
+    /* Modify styles for mobile view */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 10px;
+    border-radius: 0;
   }
 
+  /* Styles for the navigation toggle button */
+  .navigation__toggle {
+    display: block; /* Display toggle button for mobile */
+    width: 70px;
+    height: 40px;
+  }
+
+  .navigation__list-container-left-side,
+  .navigation__list-container-right-side {
+    display: none;
+  }
+
+  /* Modify other styles as needed */
+  .navigation__list-container-left-side.op,
+  .navigation__list-container-right-side.op {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 0 0;
+    background-color: rgba(15, 15, 15, 0.9);
+    border-radius: 7px;
+    /* Additional styles for mobile view */
+  }
+
+  /* Modify styles for navigation lists, items, and links */
+  .navigation__list-left-side-link,
+  .navigation__list-right-side-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* Additional styles for mobile view */
   .navigation__link {
-    color: white;
-    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 0;
+    line-height: 1;
+  }
+
+  .navigation__logout-button {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .navigation__theme-changer-container {
+    border: 2px solid;
+    border-color: #fff;
+    border-radius: 25px;
+    perspective: 25px;
+
+    &.flipped {
+      .card-front {
+        transform: rotateY(180deg); /* Rotate the front side */
+      }
+      .card-back {
+        transform: rotateY(0); /* Rotate the back side */
+      }
+    }
+  }
+
+  .navigation__theme-changer {
+    border-radius: 25px;
+    width: 100%;
+    background-color: #0f0f0f;
+
+    &.flipped {
+      .card-front {
+        transform: rotateY(180deg); /* Rotate the front side */
+      }
+      .card-back {
+        transform: rotateY(0); /* Rotate the back side */
+      }
+    }
+  }
+
+  .card-front,
+  .card-back {
+    /* transition: transform 0.9s ease-in-out; */
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(-180deg);
+    border-radius: 25px;
   }
 }

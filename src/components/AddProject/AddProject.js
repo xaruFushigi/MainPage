@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { MyContext } from "../../Context/ContextProvider";
+import React, { useState } from "react";
 // CSS
 import "./AddProject.css";
 // Formik
@@ -13,7 +12,6 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const AddProject = () => {
   const [uploadImage, setUploadImage] = useState(null);
-  const { getItemFromLocalStorage } = useContext(MyContext);
 
   const initialValues = {
     nameOfProject: "",

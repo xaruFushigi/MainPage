@@ -5,6 +5,9 @@ export const MyContext = createContext();
 const ContextProvider = (props) => {
   const [handleScrollCondition] = useState(false);
   const [activeSection, setActiveSection] = useState(""); // Store the active section
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState({
     username: "",
     id: 0,
@@ -15,6 +18,7 @@ const ContextProvider = (props) => {
   // LOGOUT button
   const onClickLogOutButton = async () => {
     setIsLoggedIn({ username: "", id: 0, statusLoggedIn: false });
+    setIsNavOpen(false);
     localStorage.removeItem("accessToken");
     window.open("/login", "_self");
   };
@@ -60,20 +64,20 @@ const ContextProvider = (props) => {
       });
       if (response.ok) {
         const data = await response.json();
-        // if user is regular
+        // if user is admin
         setIsLoggedIn({
           username: data.username,
           accessToken: data.accessToken,
           id: data.id,
+          isAdmin: data.isAdmin,
           statusLoggedIn: true,
         });
-        // if user is admin
-        if (data.isAdmin) {
+        if (!data.isAdmin) {
+          // if user is regular
           setIsLoggedIn({
             username: data.username,
             accessToken: data.accessToken,
             id: data.id,
-            isAdmin: data.isAdmin,
             statusLoggedIn: true,
           });
         }
@@ -101,6 +105,10 @@ const ContextProvider = (props) => {
     handleSectionDetection();
     CheckLogInStatus();
     FetchValidToken();
+    const savedThemeMode = localStorage.getItem("mode");
+    if (savedThemeMode === "dark") {
+      setIsDarkMode(true);
+    }
   }, []);
 
   const contextValues = {
@@ -112,6 +120,12 @@ const ContextProvider = (props) => {
     setIsLoggedIn,
     isLoggedIn,
     getItemFromLocalStorage,
+    isNavOpen,
+    setIsNavOpen,
+    isDarkMode,
+    setIsDarkMode,
+    isFlipped,
+    setIsFlipped,
   };
   return (
     <div>

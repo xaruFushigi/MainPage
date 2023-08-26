@@ -6,3 +6,29 @@
   width: 100vw; /* 100% of viewport width */
   height: 100vh; /* 100% of viewport height */
 }
+
+.project {
+  display: flex;
+  flex-direction: row;
+}
+
+.works__container-projects {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80vw; /* 100% of viewport width */
+}
+
+.growOnHover {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.5s ease-out;
+}
+
+.growOnHover:hover,
+.growOnHover:focus {
+  transform: scale(1.09);
+}

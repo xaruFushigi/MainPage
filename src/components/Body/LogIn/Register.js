@@ -5,6 +5,8 @@ import "./Register.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+// icon
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -49,8 +51,8 @@ const Register = () => {
     }
   };
   return (
-    <div className="register outline">
-      <div className="register-container outline">
+    <div className="register">
+      <div className="register-container">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -131,7 +133,10 @@ const Register = () => {
               placeholder="Confirm Password goes here"
             />
 
-            <button type="submit">Register</button>
+            <button type="submit">
+              {" "}
+              <HowToRegIcon /> Register
+            </button>
           </Form>
         </Formik>
       </div>

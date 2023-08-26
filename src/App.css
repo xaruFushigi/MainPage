@@ -29,3 +29,21 @@ button {
   color: #fff;
   text-decoration: none;
 }
+
+:root {
+  --background-color: #ffffff; /* Default light mode background color */
+  --text-color: #000000; /* Default light mode text color */
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --background-color: #000000;
+  --text-color: #ffffff;
+}
+
+.app {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: 1s;
+  /* Other styles */
+}

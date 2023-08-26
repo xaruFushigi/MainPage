@@ -21,7 +21,7 @@
   height: auto;
   padding: 20px;
   border: 5px solid #191919;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .register__register-name-container {
@@ -66,4 +66,36 @@
 
 span {
   color: red;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 390px) {
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 15px;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border: 5px solid #191919;
+    border-radius: 10px;
+  }
+  .register__register-name-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+  .register__register-name-item-lable {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }

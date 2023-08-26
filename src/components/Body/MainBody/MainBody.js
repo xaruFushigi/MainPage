@@ -12,18 +12,21 @@ const Main = () => {
   return (
     <div id="home" className="section">
       <div className="flex flex-column">
-        <div className="MainBody--container">
-          <h1 className="MainBody__body--title">
+        <div className="MainBody-container">
+          <h1 className="MainBody__body-title">
             Welcome to the Main Page of Collection of the Projects
           </h1>
-          <h3 className="MainBody__body--text">
+          <h3 className="MainBody__body-text">
             I am a web development engineer and I use react.js to develope
             front-end. <br />
             As back-end I use Node.js with Express.js and PostgreSQL as database
           </h3>
 
-          <div>
-            <button className="button-link" onClick={GitHubLink}>
+          <div className="MainBody__body--GitHubButton-link">
+            <button
+              className="MainBody__body--GitHubButton-link"
+              onClick={GitHubLink}
+            >
               <GitHubIcon className="pr2" /> GitHub
             </button>
           </div>

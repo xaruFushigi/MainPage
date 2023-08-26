@@ -15,71 +15,111 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { tuple } from "yup";
 
 const Navbar = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const { handleScroll, activeSection, isLoggedIn, onClickLogOutButton } =
-    useContext(MyContext);
+  const {
+    handleScroll,
+    activeSection,
+    isLoggedIn,
+    onClickLogOutButton,
+    isNavOpen,
+    setIsNavOpen,
+    isDarkMode,
+    setIsDarkMode,
+    isFlipped,
+    setIsFlipped,
+  } = useContext(MyContext);
   // open close Navigation Bar via icon
   const toggleIsNavOpenOnClick = () => {
     setIsNavOpen((isNavOpen) => !isNavOpen);
   };
-
+  // changes from dark to light theme
+  const toggleDarkMode = () => {
+    const webPageThemeMode = !isDarkMode;
+    setIsDarkMode(webPageThemeMode);
+    localStorage.setItem("mode", webPageThemeMode ? "dark" : "light");
+  };
+  // flip dark mode from light and vice versa
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
   return (
-    <div className="">
+    <div>
       <div className={`navigation ${isNavOpen ? "open" : ""}`}>
         <button className="navigation__toggle" onClick={toggleIsNavOpenOnClick}>
           {isNavOpen ? <MenuIcon /> : <MenuOpenIcon />}
         </button>
-
-        <div className="navigation__list-container-right-side">
-          <ul className="navigation__list">
-            <li className={`navigation__item`}>
+        {/* LEFT SIDE */}
+        <div
+          className={`navigation__list-container-left-side ${
+            isNavOpen ? "op" : ""
+          }`}
+        >
+          <ul className="navigation__list-left-side-link">
+            {/* Home Link */}
+            <li className="navigation__item">
               <a
                 className={`navigation__link ${
                   activeSection === "home" ? "active" : ""
                 }`}
                 href="/"
-                onClick={() => handleScroll("home")}
+                onClick={() => {
+                  handleScroll("home");
+                  setIsNavOpen(false);
+                }}
                 rel="noreferrer"
               >
                 <HomeIcon /> Home
               </a>
             </li>
-
-            <li className={`navigation__item `}>
+            {/* About Link */}
+            <li className="navigation__item">
               <a
                 className={`navigation__link ${
                   activeSection === "about" ? "active" : ""
                 }`}
                 href="#about"
-                onClick={() => handleScroll("about")}
+                onClick={() => {
+                  handleScroll("about");
+                  setIsNavOpen(false);
+                }}
                 rel="noreferrer"
               >
                 <InfoIcon /> About
               </a>
             </li>
-
-            <li className={`navigation__item`}>
+            {/* Works Link */}
+            <li className="navigation__item">
               <a
                 className={`navigation__link ${
                   activeSection === "works" ? "active" : ""
                 }`}
                 href="#works"
-                onClick={() => handleScroll("works")}
+                onClick={() => {
+                  handleScroll("works");
+                  setIsNavOpen(false);
+                }}
                 rel="noreferrer"
               >
                 <WorkOutlineIcon /> Works
               </a>
             </li>
-
-            <li className={`navigation__item`}>
+            {/* Contact Link */}
+            <li className="navigation__item">
               <a
                 className={`navigation__link ${
                   activeSection === "contact" ? "active" : ""
                 }`}
                 href="#contact"
-                onClick={() => handleScroll("contact")}
+                onClick={() => {
+                  handleScroll("contact");
+                  setIsNavOpen(false);
+                }}
                 rel="noreferrer"
               >
                 <ContactMailIcon /> Contact
@@ -87,50 +127,117 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-
-        <div className="navigation__list-container-left-side">
-          <ul className="navigation__list-container-left-side-link">
-            <li className="white pl2 pr2">
-              {!isLoggedIn.statusLoggedIn ? (
-                <div className="flex flex-row items-center">
+        {/* RIGHT SIDE */}
+        <div
+          className={`navigation__list-container-right-side ${
+            isNavOpen ? "op" : ""
+          }`}
+        >
+          <ul className="navigation__list-right-side-link">
+            {!isLoggedIn.statusLoggedIn ? (
+              <>
+                {/* Register Link */}
+                <li className="navigation__item">
                   <Link
                     to="/register"
-                    className="pr2 navigation__list-container-left-side-link-item"
+                    className="pr2 navigation__link"
+                    onClick={() => setIsNavOpen(false)}
                   >
-                    Register
+                    <HowToRegIcon /> Register
                   </Link>
+                </li>
+                {/* LogIn Link */}
+                <li className="navigation__item">
                   <Link
                     to="/login"
-                    className="navigation__list-container-left-side-link-item"
+                    className="navigation__link"
+                    onClick={() => setIsNavOpen(false)}
                   >
-                    LogIn
+                    <LockOpenIcon /> LogIn
                   </Link>
-                </div>
-              ) : (
-                <div className="flex flex-row items-center">
+                </li>
+                {/* Dark/Light Mode */}
+                <li
+                  className={`navigation__theme-changer-container ${
+                    isFlipped ? "flipped" : "not-flipped"
+                  }`}
+                  onClick={handleFlip}
+                >
+                  <button
+                    onClick={toggleDarkMode}
+                    className="navigation__theme-changer"
+                  >
+                    {isDarkMode ? (
+                      <div className="card-front">
+                        <NightlightRoundIcon className="white" />
+                      </div>
+                    ) : (
+                      <div className="card-back">
+                        <LightModeIcon className="white" />
+                      </div>
+                    )}
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* Profile Link */}
+                <li className="navigation__item">
                   <Link
                     className="mr2 navigation__link"
                     to={`/profile/byId/${isLoggedIn.id}`}
+                    onClick={() => setIsNavOpen(false)}
                   >
                     <AccountBoxIcon /> {isLoggedIn.username}
                   </Link>
+                </li>
 
-                  {isLoggedIn.isAdmin && (
-                    <Link className="mr2 navigation__link" to={`/addProject`}>
+                {/* Add Project Link */}
+                {isLoggedIn.isAdmin && (
+                  <li className="navigation__item">
+                    <Link
+                      className="mr2 navigation__link"
+                      to={`/addProject`}
+                      onClick={() => setIsNavOpen(false)}
+                    >
                       <AddIcon /> Add Project
                     </Link>
-                  )}
-
+                  </li>
+                )}
+                {/* LogOut Link */}
+                <li className="navigation__item">
                   <button
                     to="/logout"
-                    className="navigation__list-container-left-side-link-item navigate__listcontainer-left-side-link-item-logout navigation__link"
+                    className="navigation__logout-button navigation__link"
                     onClick={onClickLogOutButton}
                   >
                     <LogoutIcon /> Log Out
                   </button>
-                </div>
-              )}
-            </li>
+                </li>
+                {/* Dark/Light Mode */}
+                <li
+                  className={`navigation__theme-changer-container ${
+                    isFlipped ? "flipped" : "not-flipped"
+                  }`}
+                  onClick={handleFlip}
+                >
+                  <button
+                    onClick={toggleDarkMode}
+                    className="navigation__theme-changer"
+                  >
+                    {isDarkMode ? (
+                      <div className="card-front">
+                        <NightlightRoundIcon className="white" />
+                      </div>
+                    ) : (
+                      <div className="card-back">
+                        <LightModeIcon className="white" />
+                      </div>
+                    )}
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <ParticlesBg bg={true} type="custom" color="#00F" num={1} />

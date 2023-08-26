@@ -20,7 +20,7 @@
   height: auto;
   padding: 20px;
   border: 5px solid #191919;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .contact__formik-container button {
@@ -93,4 +93,32 @@
   justify-content: flex-start;
   text-align: left;
   width: 50%;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 390px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .contact__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact__formik-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 390px;
+    height: auto;
+    padding: 20px;
+    border: 5px solid #191919;
+    border-radius: 10px;
+  }
 }

@@ -1,10 +1,15 @@
-.About--container {
+.About-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw; /* 100% of viewport width */
   height: 100vh; /* 100% of viewport height */
+}
+
+.about-sub-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .about__about-me-profile-picture {
@@ -16,6 +21,8 @@
 .about__about-me-and-contact-details {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 70%;
 }
 
@@ -29,7 +36,6 @@
 .about__about-me-section-text-container {
   display: flex;
   flex-direction: row;
-  padding-left: 50px;
 }
 
 .about__about-me-section-text {
@@ -48,16 +54,110 @@
 .about__contact-details-container {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  width: 50%;
+  width: 100%;
 }
 
 .about__contact-details-details {
-  padding-left: 50px;
+  display: flex;
+  flex-direction: row;
 }
 
 .about__contact-details-link {
   display: flex;
   flex-direction: column;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 390px) {
+  .About-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about-sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about_about-me-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about_about-me-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__about-me-and-contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__about-me-profile-picture {
+    min-width: 250px;
+    min-height: 250px;
+  }
+
+  .about__about-me-profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__about-me-and-contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__about-me-section-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__contact-details-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__contact-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__contact-details-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }
