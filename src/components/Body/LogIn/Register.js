@@ -1,5 +1,5 @@
 import React from "react";
-//
+// CSS
 import "./Register.css";
 // Formik and Yup related imports for form
 import { Formik, Form, Field, ErrorMessage } from "formik";

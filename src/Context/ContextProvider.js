@@ -1,11 +1,18 @@
 import React, { useState, useEffect, createContext } from "react";
+
 // Context
 export const MyContext = createContext();
 
 const ContextProvider = (props) => {
+  // get user from localStorage
+  const getItemFromLocalStorage = localStorage.getItem("accessToken");
+  const localStorageThemeColor = localStorage.getItem("mode");
+  // states
   const [handleScrollCondition] = useState(false);
   const [activeSection, setActiveSection] = useState(""); // Store the active section
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("mode") === "dark"
+  );
   const [isFlipped, setIsFlipped] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -13,8 +20,6 @@ const ContextProvider = (props) => {
     id: 0,
     statusLoggedIn: false,
   }); // state to check/control logged in user
-  // get user from localStorage
-  const getItemFromLocalStorage = localStorage.getItem("accessToken");
   // LOGOUT button
   const onClickLogOutButton = async () => {
     setIsLoggedIn({ username: "", id: 0, statusLoggedIn: false });
@@ -100,15 +105,19 @@ const ContextProvider = (props) => {
       setIsLoggedIn({ ...isLoggedIn, statusLoggedIn: false });
     }
   };
+  // theme
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("mode", newTheme ? "dark" : "light");
+  };
   useEffect(() => {
     handleScroll();
     handleSectionDetection();
     CheckLogInStatus();
     FetchValidToken();
     const savedThemeMode = localStorage.getItem("mode");
-    if (savedThemeMode === "dark") {
-      setIsDarkMode(true);
-    }
+    setIsDarkMode(savedThemeMode === "dark"); // Set isDarkMode based on the saved theme mode
   }, []);
 
   const contextValues = {
@@ -126,6 +135,8 @@ const ContextProvider = (props) => {
     setIsDarkMode,
     isFlipped,
     setIsFlipped,
+    localStorageThemeColor,
+    toggleTheme,
   };
   return (
     <div>

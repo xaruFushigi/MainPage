@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+// ScrollBar
+import Scroll from "./Scroll";
 // CSS
 import "./Works.css";
 
 const Works = () => {
+  const location = useLocation();
+  const worksRef = useRef(null); // Create a ref for the "Works" section
   const [projects, setProjects] = useState([]);
   const FetchProjectsFromDatabase = async () => {
     try {
@@ -27,6 +32,10 @@ const Works = () => {
 
   useEffect(() => {
     FetchProjectsFromDatabase();
+    // Scroll to the "Works" section when the component mounts
+    if (location.hash === "#works") {
+      worksRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   const MapProjects = () => {
@@ -52,11 +61,13 @@ const Works = () => {
     });
   };
   return (
-    <div id="works" className="works-container section">
+    <div id="works" className="works-container section" ref={worksRef}>
       <div className="works">
         <h2>CHECK OUT SOME OF MY WORKS</h2>
       </div>
-      <div className="works__container-projects outline">{MapProjects()}</div>
+      <Scroll>
+        <div className="works__container-projects">{MapProjects()}</div>
+      </Scroll>
     </div>
   );
 };

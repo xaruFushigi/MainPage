@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 // Formik
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -32,9 +33,19 @@ const Contact = () => {
       console.log(error);
     }
   };
+  // to be able to open contact section at press from other routes
+  const location = useLocation();
+  const worksRef = useRef(null); // Create a ref for the "contact" section
+
+  useEffect(() => {
+    // Scroll to the "Contact" section when the component mounts
+    if (location.hash === "#contact") {
+      worksRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   return (
-    <div id="contact" className="contact section">
+    <div id="contact" className="contact section" ref={worksRef}>
       <div className="contact__container">
         <Formik
           initialValues={initialValues}

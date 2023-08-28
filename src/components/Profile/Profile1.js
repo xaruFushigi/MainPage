@@ -9,18 +9,15 @@ import "./Profile.css";
 // icon
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CancelIcon from "@mui/icons-material/Cancel";
 
 const Profile = () => {
   // useParams hook to use as ID parameter
   let { profileId } = useParams();
   // useState for profile related variables
-  const [profileInfo, setProfileInfo] = useState({});
+  const [profileInfo, setProfileInfo] = useState("");
   const [changePassword, setChangePassword] = useState(false);
-  const [deleteAccount, setDeleteAccount] = useState(false);
   // Context
-  const { isLoggedIn, getItemFromLocalStorage, localStorageThemeColor } =
-    useContext(MyContext);
+  const { isLoggedIn, getItemFromLocalStorage } = useContext(MyContext);
   //
   const initialValues = {
     oldPassword: "",
@@ -100,66 +97,49 @@ const Profile = () => {
   return (
     <div className="">
       <div className="profile__container">
-        <div className="profile__profile-information-container">
-          <div className="b">Profile Information</div>
-          <div>
-            <div className="profile-profile-information">
-              <div className="profile__profile-information-position">
-                First Name:{" "}
+        {/* */}
+        <div className=" right flex flex-row">
+          {/* left side */}
+          <div className="profile__left-side">
+            <div className="profile__left-side-title">Profile Information</div>
+          </div>
+          {/* right side */}
+          <div className="profile__right-side">
+            <div className="profile__right-side-profileInfo">
+              <div>
+                <div>Username : </div>
+                <div>First Name : </div>
+                <div>Last Name : </div>
               </div>
-              <div className="profile__profile-information-position">
-                {profileInfo.firstname}
-              </div>
-              <div className="profile__profile-information-position">
-                Last Name:{" "}
-              </div>
-              <div className="profile__profile-information-position">
-                {profileInfo.lastname}
-              </div>
-              <div className="profile__profile-information-position">
-                Username:{" "}
-              </div>
-              <div className="profile__profile-information-position">
-                {profileInfo.username}
+
+              <div className=" flex flex-column justify-start">
+                <div className="flex justify-start">{profileInfo.username}</div>
+                <div className="flex justify-start">
+                  {profileInfo.firstname}
+                </div>
+                <div className="flex justify-start">{profileInfo.lastname}</div>
               </div>
             </div>
-            {/* Buttons: Change Password and Delete Account */}
-            <div className="profile__buttons-container">
-              <div>
-                <button
-                  className={` ${
-                    localStorageThemeColor === "dark"
-                      ? "profile__button-light"
-                      : "profile__button-dark"
-                  } `}
-                  onClick={() => {
-                    setChangePassword((prevData) => !prevData);
-                  }}
-                >
-                  <ChangeCircleIcon /> Change Password
-                </button>
+            <div>
+              <div
+                className="profile__button pointer"
+                onClick={() => setChangePassword((prevData) => !prevData)}
+              >
+                <ChangeCircleIcon /> Change Password
               </div>
-              <div>
-                <button
-                  className={` ${
-                    localStorageThemeColor === "dark"
-                      ? "profile__button-light"
-                      : "profile__button-dark"
-                  } `}
-                  onClick={() => {
-                    setDeleteAccount((prevData) => !prevData);
-                  }}
-                >
-                  <DeleteIcon /> Delete Account
-                </button>
+              <div
+                className="profile__button pointer"
+                onClick={OnClickDeleteAccount}
+              >
+                <DeleteIcon /> Delete Account
               </div>
             </div>
           </div>
         </div>
-        {/* Change Password Form */}
+        {/* Change Password Formik */}
         <div
           className={`profile-change-passsword-container ${
-            changePassword ? "none" : "hidden"
+            changePassword ? "" : "hidden"
           }`}
         >
           <Formik
@@ -208,55 +188,12 @@ const Profile = () => {
               </div>
 
               <div className="submit-button-container">
-                <button
-                  type="submit"
-                  className={` ${
-                    localStorageThemeColor === "dark"
-                      ? "profile__button-light"
-                      : "profile__button-dark"
-                  } `}
-                >
-                  <ChangeCircleIcon /> Change Password
+                <button type="submit" className="submit-button">
+                  Change Password
                 </button>
               </div>
             </Form>
           </Formik>
-        </div>
-        {/* Confirmation of deleting Account */}
-        <div
-          className={`profile__delete-account-container ${
-            deleteAccount ? "" : "hidden"
-          }`}
-        >
-          Confirm Account Delete
-          <div className="profile__delete-account">
-            <div>
-              <button
-                className={` ${
-                  localStorageThemeColor === "dark"
-                    ? "profile__button-light"
-                    : "profile__button-dark"
-                } `}
-                onClick={() => {
-                  setDeleteAccount((prevData) => !prevData);
-                }}
-              >
-                <CancelIcon /> Cancel
-              </button>
-            </div>
-            <div>
-              <button
-                className={` ${
-                  localStorageThemeColor === "dark"
-                    ? "profile__button-light"
-                    : "profile__button-dark"
-                } `}
-                onClick={OnClickDeleteAccount}
-              >
-                <DeleteIcon /> Delete Account
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

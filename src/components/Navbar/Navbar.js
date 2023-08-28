@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../Context/ContextProvider";
 // CSS
@@ -19,7 +19,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { tuple } from "yup";
 
 const Navbar = () => {
   const {
@@ -33,17 +32,18 @@ const Navbar = () => {
     setIsDarkMode,
     isFlipped,
     setIsFlipped,
+    toggleTheme,
   } = useContext(MyContext);
   // open close Navigation Bar via icon
   const toggleIsNavOpenOnClick = () => {
     setIsNavOpen((isNavOpen) => !isNavOpen);
   };
   // changes from dark to light theme
-  const toggleDarkMode = () => {
-    const webPageThemeMode = !isDarkMode;
-    setIsDarkMode(webPageThemeMode);
-    localStorage.setItem("mode", webPageThemeMode ? "dark" : "light");
-  };
+  // const toggleDarkMode = () => {
+  //   const webPageThemeMode = isDarkMode;
+  //   setIsDarkMode("dark");
+  //   localStorage.setItem("mode", webPageThemeMode ? "dark" : "light");
+  // };
   // flip dark mode from light and vice versa
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -63,67 +63,70 @@ const Navbar = () => {
           <ul className="navigation__list-left-side-link">
             {/* Home Link */}
             <li className="navigation__item">
-              <a
+              <Link
+                to="/" // Use react-router-dom's Link component to navigate to the home page
                 className={`navigation__link ${
                   activeSection === "home" ? "active" : ""
                 }`}
-                href="/"
                 onClick={() => {
-                  handleScroll("home");
                   setIsNavOpen(false);
+                  handleScroll("home");
+                  const targetSection = document.getElementById("top");
+                  if (targetSection) {
+                    targetSection.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start", // Scroll to the top of the element
+                    });
+                  }
                 }}
-                rel="noreferrer"
               >
                 <HomeIcon /> Home
-              </a>
+              </Link>
             </li>
             {/* About Link */}
             <li className="navigation__item">
-              <a
+              <Link
+                to="/#about" // Add the hash fragment for the "Works" section
                 className={`navigation__link ${
                   activeSection === "about" ? "active" : ""
                 }`}
-                href="#about"
                 onClick={() => {
-                  handleScroll("about");
                   setIsNavOpen(false);
+                  handleScroll("about");
                 }}
-                rel="noreferrer"
               >
                 <InfoIcon /> About
-              </a>
+              </Link>
             </li>
             {/* Works Link */}
             <li className="navigation__item">
-              <a
+              <Link
+                to="/#works" // Add the hash fragment for the "Works" section
                 className={`navigation__link ${
                   activeSection === "works" ? "active" : ""
                 }`}
-                href="#works"
                 onClick={() => {
-                  handleScroll("works");
                   setIsNavOpen(false);
+                  handleScroll("works");
                 }}
-                rel="noreferrer"
               >
                 <WorkOutlineIcon /> Works
-              </a>
+              </Link>
             </li>
             {/* Contact Link */}
             <li className="navigation__item">
-              <a
+              <Link
+                to="/#contact" // Add the hash fragment for the "Works" section
                 className={`navigation__link ${
                   activeSection === "contact" ? "active" : ""
                 }`}
-                href="#contact"
                 onClick={() => {
-                  handleScroll("contact");
                   setIsNavOpen(false);
+                  handleScroll("contact");
                 }}
-                rel="noreferrer"
               >
                 <ContactMailIcon /> Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -164,7 +167,7 @@ const Navbar = () => {
                   onClick={handleFlip}
                 >
                   <button
-                    onClick={toggleDarkMode}
+                    onClick={toggleTheme}
                     className="navigation__theme-changer"
                   >
                     {isDarkMode ? (
@@ -222,7 +225,7 @@ const Navbar = () => {
                   onClick={handleFlip}
                 >
                   <button
-                    onClick={toggleDarkMode}
+                    onClick={toggleTheme}
                     className="navigation__theme-changer"
                   >
                     {isDarkMode ? (

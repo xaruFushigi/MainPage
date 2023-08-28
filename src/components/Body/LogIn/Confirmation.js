@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// Formik
-import { Formik, Form, Field } from "formik";
+import { MyContext } from "../../../Context/ContextProvider";
+// Formik and Yup related imports for form
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 // CSS
 import "./Confirmation.css";
 // Icon
@@ -9,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 const Confirmation = () => {
   const location = useLocation();
@@ -18,6 +21,13 @@ const Confirmation = () => {
   const [editingLastName, setEditingLastName] = useState(false);
   const [editingUsername, setEditingUsername] = useState(false);
   const [user, setUser] = useState(initialUser);
+  const { localStorageThemeColor } = useContext(MyContext);
+  // validation parameters of form
+  const validationSchema = Yup.object().shape({
+    firstname: Yup.string().min(3).max(64).required(),
+    lastname: Yup.string().min(3).max(64).required(),
+    username: Yup.string().min(3).max(64).required(),
+  });
   // send registred form to back-end
   const onSubmitRegisterButton = async (event) => {
     try {
@@ -110,210 +120,285 @@ const Confirmation = () => {
       <div className="confirmation-title">
         <h2>User Information Confirmation</h2>
       </div>
-
       <Formik
         initialValues={user}
-        onSubmit={() => {
-          onSubmitRegisterButton();
+        onSubmit={(event) => {
+          onSubmitRegisterButton(event);
         }}
+        validationSchema={validationSchema}
       >
         <Form className="confirmation__formContainer">
-          {/* FirstName */}
-          <div className="confirmation__form-firstName">
-            <div className="flex flex-row items-center justify-start confirmation__firstName">
-              <label className="confirmation__form-label">First Name:</label>
-              <div>
-                {!editingFirstName && ( //{/* Input field and P tag */}
-                  <div className="margin_space">
-                    <p className={`confirmation__form-text`}>
-                      {user.firstname}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Save and Cancel Buttons */}
-            <div className="confirmation__preEdit">
-              {editingFirstName ? (
-                <>
-                  <Field
-                    type="text"
-                    name="firstname"
-                    className={`confirmation__form-input`}
-                    value={editedValueFirstName}
-                    onChange={(event) =>
-                      setEditedValueFirstName(event.target.value)
-                    } // Update editedValue when input changes
-                  />
-                  {/* Save button */}
-                  <div className="">
-                    <button
-                      className={`confirmation__button`}
-                      onClick={(event) => {
-                        onSubmitSaveEditFirstNameButton(event);
-                      }}
-                    >
-                      <SaveIcon /> Save
-                    </button>
-                  </div>
-                  {/* Cancel button */}
-                  <div className="ml2">
-                    <button
-                      type="button"
-                      className={`confirmation__button`}
-                      onClick={onCancelEditFirstNameButton}
-                    >
-                      <CancelIcon /> Cancel
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="edit_button-container">
+          {/* 1 */}
+          <div className="confirmation__div-center">
+            <label>First Name:</label>
+            <ErrorMessage name="firstname" component="div" />
+          </div>
+          {/* 2 */}
+          <div className="confirmation__div-center">
+            {!editingFirstName ? (
+              <p>{user.firstname}</p>
+            ) : (
+              <Field
+                type="text"
+                name="firstname"
+                className={` ${
+                  localStorageThemeColor === "dark"
+                    ? "confirmation__form-input-light"
+                    : "confirmation__form-input-dark"
+                } `}
+                value={editedValueFirstName}
+                onChange={(event) =>
+                  setEditedValueFirstName(event.target.value)
+                } // Update editedValue when input changes
+              />
+            )}
+          </div>
+          {/* 3 */}
+          <div>
+            {!editingFirstName ? (
+              <>
+                <div className="confirmation__div-center">
                   {/* Edit Button */}
                   <button
                     type="button"
-                    className={`confirmation__button`}
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
                     onClick={() => setEditingFirstName(true)}
                   >
                     <EditIcon /> Edit
                   </button>
                 </div>
-              )}
-            </div>
-          </div>
-          {/* LastName */}
-          <div className="confirmation__form-firstName">
-            <div className="flex flex-row items-center justify-start">
-              <label className="confirmation__form-label">Last Name:</label>
-              <div>
-                {!editingLastName && ( //{/* Input field and P tag */}
-                  <div className="margin_space">
-                    <p className={`confirmation__form-text`}>{user.lastname}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Save and Cancel Buttons */}
-            <div className="flex flex-row items-center justify-start confirmation__form-editing">
-              {editingLastName ? (
-                <>
-                  <Field
-                    type="text"
-                    name="lastname"
-                    className={`confirmation__form-input`}
-                    value={editedValueLastName}
-                    onChange={(event) =>
-                      setEditedValueLastName(event.target.value)
-                    } // Update editedValue when input changes
-                  />
-                  {/* Save button */}
-                  <div className="">
-                    <button
-                      className={`confirmation__button`}
-                      onClick={(event) => {
-                        onSubmitSaveEditLastNameButton(event);
-                      }}
-                    >
-                      <SaveIcon /> Save
-                    </button>
-                  </div>
+              </>
+            ) : (
+              <>
+                <div className="confirmation__div-center">
                   {/* Cancel button */}
-                  <div className="ml2">
-                    <button
-                      type="button"
-                      className={`confirmation__button`}
-                      onClick={onCancelEditLastNameButton}
-                    >
-                      <CancelIcon /> Cancel
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="">
+                  <button
+                    type="button"
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
+                    onClick={onCancelEditFirstNameButton}
+                  >
+                    <CancelIcon /> Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+          {/* 4 */}
+          <div
+            className={`${
+              editingFirstName
+                ? "confirmation__div-center"
+                : "confirmation__div-center hidden"
+            }`}
+          >
+            <button
+              className={` ${
+                localStorageThemeColor === "dark"
+                  ? "confirmation__button-light"
+                  : "confirmation__button-dark"
+              } `}
+              onClick={(event) => {
+                onSubmitSaveEditFirstNameButton(event);
+              }}
+            >
+              <SaveIcon /> Save
+            </button>
+          </div>
+          {/* 5 */}
+          <div className="confirmation__div-center">
+            <label>Last Name:</label>
+          </div>
+          {/* 6 */}
+          <div className="confirmation__div-center">
+            {!editingLastName ? (
+              <p>{user.lastname}</p>
+            ) : (
+              <Field
+                type="text"
+                name="lastname"
+                className={` ${
+                  localStorageThemeColor === "dark"
+                    ? "confirmation__form-input-light"
+                    : "confirmation__form-input-dark"
+                } `}
+                value={editedValueLastName}
+                onChange={(event) => setEditedValueLastName(event.target.value)} // Update editedValue when input changes
+              />
+            )}
+          </div>
+          {/* 7 */}
+          <div className="confirmation__div-center">
+            {!editingLastName ? (
+              <>
+                <div className="confirmation__div-center">
                   {/* Edit Button */}
                   <button
                     type="button"
-                    className={`confirmation__button`}
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
                     onClick={() => setEditingLastName(true)}
                   >
                     <EditIcon /> Edit
                   </button>
                 </div>
-              )}
-            </div>
-          </div>
-          {/* Username */}
-          <div className="confirmation__form-firstName">
-            <div className="flex flex-row items-center justify-start">
-              <label className="confirmation__form-label">Uname:</label>
-              <div>
-                {!editingUsername && ( //{/* Input field and P tag */}
-                  <div className="">
-                    <p className={`confirmation__form-text`}>{user.username}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Save and Cancel Buttons */}
-            <div className="flex flex-row items-center justify-start">
-              {editingUsername ? (
-                <>
-                  <Field
-                    type="text"
-                    name="username"
-                    className={`confirmation__form-input`}
-                    value={editedValueUsername}
-                    onChange={(event) =>
-                      setEditedValueUsername(event.target.value)
-                    } // Update editedValue when input changes
-                  />
-                  {/* Save button */}
-                  <div className="">
-                    <button
-                      className={`confirmation__button`}
-                      onClick={(event) => {
-                        onSubmitSaveEditUsernameButton(event);
-                      }}
-                    >
-                      <SaveIcon /> Save
-                    </button>
-                  </div>
+              </>
+            ) : (
+              <>
+                <div className="confirmation__div-center">
                   {/* Cancel button */}
-                  <div className="ml2">
-                    <button
-                      type="button"
-                      className={`confirmation__button`}
-                      onClick={onCancelEditUsernameButton}
-                    >
-                      <CancelIcon /> Cancel
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="margin_space">
+                  <button
+                    type="button"
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
+                    onClick={onCancelEditLastNameButton}
+                  >
+                    <CancelIcon /> Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+          {/* 8 */}
+          <div
+            className={`${
+              editingLastName
+                ? "confirmation__div-center"
+                : "confirmation__div-center hidden"
+            }`}
+          >
+            <button
+              className={` ${
+                localStorageThemeColor === "dark"
+                  ? "confirmation__button-light"
+                  : "confirmation__button-dark"
+              } `}
+              onClick={(event) => {
+                onSubmitSaveEditLastNameButton(event);
+              }}
+            >
+              <SaveIcon /> Save
+            </button>
+          </div>
+          {/* 9 */}
+          <div className="confirmation__div-center">
+            <label>Username:</label>
+          </div>
+          {/* 10 */}
+          <div className="confirmation__div-center">
+            {!editingUsername ? (
+              <p>{user.username}</p>
+            ) : (
+              <Field
+                type="text"
+                name="username"
+                className={` ${
+                  localStorageThemeColor === "dark"
+                    ? "confirmation__form-input-light"
+                    : "confirmation__form-input-dark"
+                } `}
+                value={editedValueUsername}
+                onChange={(event) => setEditedValueUsername(event.target.value)} // Update editedValue when input changes
+              />
+            )}
+          </div>
+          {/* 11 */}
+          <div className="confirmation__div-center">
+            {!editingUsername ? (
+              <>
+                <div className="confirmation__div-center">
                   {/* Edit Button */}
                   <button
                     type="button"
-                    className={`confirmation__button`}
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
                     onClick={() => setEditingUsername(true)}
                   >
                     <EditIcon /> Edit
                   </button>
                 </div>
-              )}
-            </div>
+              </>
+            ) : (
+              <>
+                <div className="confirmation__div-center">
+                  {/* Cancel button */}
+                  <button
+                    type="button"
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "confirmation__button-light"
+                        : "confirmation__button-dark"
+                    } `}
+                    onClick={onCancelEditUsernameButton}
+                  >
+                    <CancelIcon /> Cancel
+                  </button>
+                </div>
+              </>
+            )}
           </div>
-          {/* Submit form*/}
-          <div className="confirmation__register-button-container">
-            {/* Submit Registration Confirmation Button */}
+          {/* 12 */}
+          <div
+            className={`${
+              editingUsername
+                ? "confirmation__div-center"
+                : "confirmation__div-center hidden"
+            }`}
+          >
             <button
-              onClick={onSubmitRegisterButton}
-              className="confirmation__register-button"
+              className={` ${
+                localStorageThemeColor === "dark"
+                  ? "confirmation__button-light"
+                  : "confirmation__button-dark"
+              } `}
+              onClick={(event) => {
+                onSubmitSaveEditUsernameButton(event);
+              }}
+            >
+              <SaveIcon /> Save
+            </button>
+          </div>
+          {/* 13 */}
+          <div></div>
+          {/* 14 */} {/* Submit Registration Confirmation Button */}
+          <div className="confirmation__div-center">
+            <button
+              className={` ${
+                localStorageThemeColor === "dark"
+                  ? "confirmation__button-light"
+                  : "confirmation__button-dark"
+              } `}
             >
               <AppRegistrationIcon /> Register
+            </button>
+          </div>
+          {/* 15 */} {/* Backt ot Registration Form Button */}
+          <div className="confirmation__div-center">
+            <button
+              className={` ${
+                localStorageThemeColor === "dark"
+                  ? "confirmation__button-light"
+                  : "confirmation__button-dark"
+              } `}
+              onClick={() => navigate("/register")}
+            >
+              <KeyboardBackspaceIcon /> Back to Registration
             </button>
           </div>
         </Form>

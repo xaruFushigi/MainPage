@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MyContext } from "./Context/ContextProvider";
 // CSS
@@ -18,8 +18,9 @@ import {
 
 function App() {
   const { isDarkMode } = useContext(MyContext);
+
   return (
-    <div className={`App app ${isDarkMode ? "" : "dark-mode"}`}>
+    <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <BrowserRouter>
         <Navbar />
         <Routes>

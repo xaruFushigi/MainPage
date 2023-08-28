@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 // icons
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -10,8 +11,17 @@ import "./About.css";
 import profileImage from "./images/profile.png";
 
 const About = () => {
+  const location = useLocation();
+  const worksRef = useRef(null); // Create a ref for the "Works" section
+
+  useEffect(() => {
+    // Scroll to the "About" section when the component mounts
+    if (location.hash === "#about") {
+      worksRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   return (
-    <div className="About-container section" id="about">
+    <div className="About-container section" id="about" ref={worksRef}>
       <div className="about-sub-container">
         {/* profile image */}
         <div className="about__about-me-profile-picture-container">
