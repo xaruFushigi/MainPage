@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MyContext } from "./Context/ContextProvider";
 // CSS
@@ -12,8 +12,11 @@ import {
   Register,
   Profile,
   AddProject,
+  TabbedInterface,
   Confirmation,
+  UploadFile,
   LogIn,
+  NotFound,
 } from "./components";
 
 function App() {
@@ -33,8 +36,11 @@ function App() {
           />
           <Route path="/confirmation" exact element={<Confirmation />} />
           <Route path="/profile/byId/:profileId" exact element={<Profile />} />
+          <Route path="/uploads" exact element={<TabbedInterface />} />
           <Route path="/addProject" exact element={<AddProject />} />
+          <Route path="/uploadFile" exact element={<UploadFile />} />
           <Route path="/login" exact element={<LogIn />} />
+          <Route path="*" exact element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

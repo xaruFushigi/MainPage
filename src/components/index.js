@@ -10,5 +10,9 @@ export { default as Confirmation } from "./Body/LogIn/Confirmation";
 // Profile
 export { default as Profile } from "./Profile/Profile";
 export { default as AddProject } from "./AddProject/AddProject";
+export { default as TabbedInterface } from "./TabbedInterface/TabbedInterface";
+export { default as UploadFile } from "./UploadFile/UploadFile";
 // Login
 export { default as LogIn } from "./Body/LogIn/LogIn";
+// NotFound
+export { default as NotFound } from "./NotFound/NotFound";

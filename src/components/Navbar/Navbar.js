@@ -200,10 +200,10 @@ const Navbar = () => {
                   <li className="navigation__item">
                     <Link
                       className="mr2 navigation__link"
-                      to={`/addProject`}
+                      to={`/uploads`}
                       onClick={() => setIsNavOpen(false)}
                     >
-                      <AddIcon /> Add Project
+                      <AddIcon /> Uploads
                     </Link>
                   </li>
                 )}

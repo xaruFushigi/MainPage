@@ -1,0 +1,36 @@
+.tabbedInterface__container {
+  width: 100vw; /* 100% of viewport width */
+  height: 90vh; /* 100% of viewport height */
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  width: 100vw; /* 100% of viewport width */
+  height: 30vh; /* 100% of viewport height */
+}
+
+.tab-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #191919;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px;
+  width: 150px;
+  height: 45px;
+}
+
+.tab-buttons button.active-tab {
+  background-color: #f0f0f0;
+  color: #191919;
+  border-top-left-radius: 25px;
+  transition: 0.5s ease-in-out;
+}
+
+.tabbedInterface__buttons {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,8 @@
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* 100% of viewport width */
+  height: 90vh; /* 100% of viewport height */
+}

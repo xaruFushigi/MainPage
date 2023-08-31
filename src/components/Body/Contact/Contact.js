@@ -12,20 +12,23 @@ import SubjectIcon from "@mui/icons-material/Subject";
 import MessageIcon from "@mui/icons-material/Message";
 
 const Contact = () => {
+  // to be able to open contact section at press from other routes
+  const location = useLocation();
+  const worksRef = useRef(null); // Create a ref for the "contact" section
   const initialValues = {
     name: "",
     email: "",
     subject: "",
     message: "",
   };
-
+  // validation schema for Formik
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(8).max(64).required(),
     email: Yup.string().min(1).max(30).required(),
     subject: Yup.string().min(3).max(20).required(),
     message: Yup.string().min(3).max(120).required(),
   });
-
+  // on Submit button of Formik
   const onSubmitContact = () => {
     try {
       // Handle form submission logic
@@ -33,9 +36,6 @@ const Contact = () => {
       console.log(error);
     }
   };
-  // to be able to open contact section at press from other routes
-  const location = useLocation();
-  const worksRef = useRef(null); // Create a ref for the "contact" section
 
   useEffect(() => {
     // Scroll to the "Contact" section when the component mounts

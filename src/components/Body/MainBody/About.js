@@ -1,9 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 // icons
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
 // CSS
 import "./About.css";
@@ -12,8 +11,19 @@ import profileImage from "./images/profile.png";
 
 const About = () => {
   const location = useLocation();
-  const worksRef = useRef(null); // Create a ref for the "Works" section
-
+  const worksRef = useRef(null); // Create a ref for the "about" section
+  const [
+    isPopUpWindowForDownloadResumeOpen,
+    setIsPopUpWindowForDownloadResumeOpen,
+  ] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  // toggle button to Open Pop Up window for CV download
+  const togglePopUpWindowForDownloadResume = () => {
+    setIsPopUpWindowForDownloadResumeOpen((prevCondition) => !prevCondition);
+  };
+  const closePopUp = () => {
+    setIsOpen(false);
+  };
   useEffect(() => {
     // Scroll to the "About" section when the component mounts
     if (location.hash === "#about") {
@@ -55,22 +65,64 @@ const About = () => {
               <div className="about__contact-details-details">
                 <h1>Contact Details</h1>
                 <div className="about__contact-details-link">
-                  <button className="mb2 mt2 button-link">
-                    <GitHubIcon className="pr2" /> GitHub
-                  </button>
-                  <button className="mb2 mt2 button-link">
-                    <GoogleIcon className="pr2" /> Gmail
-                  </button>
-                  <button className="mb2 mt2 button-link">
-                    <LinkedInIcon className="pr2" /> LinkedIn
-                  </button>
+                  {/* GitHub button */}
+                  <div className="ma1">
+                    <button className="mb2 mt2 button-link">
+                      <GitHubIcon className="pr2" /> GitHub
+                    </button>
+                  </div>
+                  {/* LinkedIn button */}
+                  <div className="ma1">
+                    <button className="mb2 mt2 button-link">
+                      <LinkedInIcon className="pr2" /> LinkedIn
+                    </button>
+                  </div>
+                  {/* Resume button */}
+                  <div className="ma1">
+                    <button
+                      className="button-link"
+                      onClick={togglePopUpWindowForDownloadResume}
+                    >
+                      <CloudDownloadIcon className="pr2" /> Resume
+                    </button>
+                  </div>
                 </div>
               </div>
-              {/* Resume */}
-              <div className="about__contact-details-resume">
-                <button className="button-link">
-                  <CloudDownloadIcon className="pr2" /> Resume
-                </button>
+              {/* Resume Pop-Up */}
+              <div className={`about__contact-details-resum `}>
+                {isPopUpWindowForDownloadResumeOpen && (
+                  <div className={`about__popup-window-download-cv`}>
+                    {/* close pop-up window button */}
+                    <button
+                      className="close-button"
+                      onClick={togglePopUpWindowForDownloadResume}
+                    >
+                      X
+                    </button>
+                    <div className={`popup`}>
+                      <div className="popup-content">
+                        <h2 className="black">Download Options</h2>
+                        <ul className="popup__download-list">
+                          <li className="popup__download-list-item">
+                            <button className="popup__download-button">
+                              <CloudDownloadIcon /> CV English
+                            </button>
+                          </li>
+                          <li className="popup__download-list-item">
+                            <button className="popup__download-button">
+                              <CloudDownloadIcon /> CV Japanese
+                            </button>
+                          </li>
+                          <li className="popup__download-list-item">
+                            <button className="popup__download-button">
+                              <CloudDownloadIcon /> Resume Japanese
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
