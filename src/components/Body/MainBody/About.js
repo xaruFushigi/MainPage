@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 // icons
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
@@ -8,15 +8,21 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "./About.css";
 // Image
 import profileImage from "./images/profile.png";
-
+// Parallax
+import { motion, useScroll, useTransform } from "framer-motion";
+// animations
+import StarsCanvas from "../../../Stars";
+import { MyContext } from "../../../Context/ContextProvider";
 const About = () => {
   const location = useLocation();
+  const { GitHubLink, LinkedInLink } = useContext(MyContext);
   const worksRef = useRef(null); // Create a ref for the "about" section
   const [
     isPopUpWindowForDownloadResumeOpen,
     setIsPopUpWindowForDownloadResumeOpen,
   ] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
   // toggle button to Open Pop Up window for CV download
   const togglePopUpWindowForDownloadResume = () => {
     setIsPopUpWindowForDownloadResumeOpen((prevCondition) => !prevCondition);
@@ -30,8 +36,18 @@ const About = () => {
       worksRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+
+  let { scrollYProgress } = useScroll();
+  let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   return (
-    <div className="About-container section" id="about" ref={worksRef}>
+    <motion.div
+      style={{ y }}
+      className="About-container section"
+      id="about"
+      ref={worksRef}
+    >
+      {/* <StarsCanvas /> */}
       <div className="about-sub-container">
         {/* profile image */}
         <div className="about__about-me-profile-picture-container">
@@ -57,7 +73,6 @@ const About = () => {
               </div>
             </section>
           </div>
-
           {/* Contact Details section */}
           <div className="about__contact-details-section-container">
             {/* Contact Details */}
@@ -67,13 +82,19 @@ const About = () => {
                 <div className="about__contact-details-link">
                   {/* GitHub button */}
                   <div className="ma1">
-                    <button className="mb2 mt2 button-link">
+                    <button
+                      className="mb2 mt2 button-link"
+                      onClick={GitHubLink}
+                    >
                       <GitHubIcon className="pr2" /> GitHub
                     </button>
                   </div>
                   {/* LinkedIn button */}
                   <div className="ma1">
-                    <button className="mb2 mt2 button-link">
+                    <button
+                      className="mb2 mt2 button-link"
+                      onClick={LinkedInLink}
+                    >
                       <LinkedInIcon className="pr2" /> LinkedIn
                     </button>
                   </div>
@@ -92,14 +113,17 @@ const About = () => {
               <div className={`about__contact-details-resum `}>
                 {isPopUpWindowForDownloadResumeOpen && (
                   <div className={`about__popup-window-download-cv`}>
-                    {/* close pop-up window button */}
-                    <button
-                      className="close-button"
-                      onClick={togglePopUpWindowForDownloadResume}
-                    >
-                      X
-                    </button>
                     <div className={`popup`}>
+                      {/* close pop-up window button */}
+                      <div className="about__popup-window-close-button-container">
+                        <button
+                          className="close-button"
+                          onClick={togglePopUpWindowForDownloadResume}
+                        >
+                          X
+                        </button>
+                      </div>
+                      {/* Resume formats for Download */}
                       <div className="popup-content">
                         <h2 className="black">Download Options</h2>
                         <ul className="popup__download-list">
@@ -128,7 +152,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

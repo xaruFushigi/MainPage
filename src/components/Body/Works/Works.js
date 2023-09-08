@@ -4,6 +4,9 @@ import { useLocation } from "react-router-dom";
 import Scroll from "./Scroll";
 // CSS
 import "./Works.css";
+// animation
+import StarsCanvas from "../../../Stars";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Works = () => {
   const location = useLocation();
@@ -37,6 +40,9 @@ const Works = () => {
       worksRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+  // Stars scrolling configuration
+  let { scrollYProgress } = useScroll();
+  let y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   const MapProjects = () => {
     return projects.map((value, index) => {
@@ -61,14 +67,20 @@ const Works = () => {
     });
   };
   return (
-    <div id="works" className="works-container section" ref={worksRef}>
+    <motion.div
+      style={{ y }}
+      id="works"
+      className="works-container section"
+      ref={worksRef}
+    >
+      {/* <StarsCanvas /> */}
       <div className="works">
         <h2>CHECK OUT SOME OF MY WORKS</h2>
       </div>
       <Scroll>
         <div className="works__container-projects">{MapProjects()}</div>
       </Scroll>
-    </div>
+    </motion.div>
   );
 };
 

@@ -10,9 +10,7 @@ const ContextProvider = (props) => {
   // states
   const [handleScrollCondition] = useState(false);
   const [activeSection, setActiveSection] = useState(""); // Store the active section
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("mode") === "dark"
-  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState({
@@ -57,6 +55,10 @@ const ContextProvider = (props) => {
   // my github profile link
   const GitHubLink = () => {
     window.open("https://github.com/xaruFushigi");
+  };
+  // my linkedIn link
+  const LinkedInLink = () => {
+    window.open("https://www.linkedin.com/in/bokhodir-ziedullaev-90b05b1b8/");
   };
   const FetchValidToken = async () => {
     try {
@@ -124,6 +126,7 @@ const ContextProvider = (props) => {
     handleScroll,
     handleScrollCondition,
     GitHubLink,
+    LinkedInLink,
     activeSection,
     onClickLogOutButton,
     setIsLoggedIn,

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../../Context/ContextProvider";
 // CSS
 import "./Navbar.css";
-// animations
-import ParticlesBg from "particles-bg";
 // icons
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -29,7 +27,6 @@ const Navbar = () => {
     isNavOpen,
     setIsNavOpen,
     isDarkMode,
-    setIsDarkMode,
     isFlipped,
     setIsFlipped,
     toggleTheme,
@@ -38,12 +35,6 @@ const Navbar = () => {
   const toggleIsNavOpenOnClick = () => {
     setIsNavOpen((isNavOpen) => !isNavOpen);
   };
-  // changes from dark to light theme
-  // const toggleDarkMode = () => {
-  //   const webPageThemeMode = isDarkMode;
-  //   setIsDarkMode("dark");
-  //   localStorage.setItem("mode", webPageThemeMode ? "dark" : "light");
-  // };
   // flip dark mode from light and vice versa
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -95,7 +86,7 @@ const Navbar = () => {
                   handleScroll("about");
                 }}
               >
-                <InfoIcon /> About
+                <InfoIcon /> About Me
               </Link>
             </li>
             {/* Works Link */}
@@ -110,7 +101,7 @@ const Navbar = () => {
                   handleScroll("works");
                 }}
               >
-                <WorkOutlineIcon /> Works
+                <WorkOutlineIcon /> Projects
               </Link>
             </li>
             {/* Contact Link */}
@@ -243,7 +234,6 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <ParticlesBg bg={true} type="custom" color="#00F" num={1} />
       </div>
     </div>
   );

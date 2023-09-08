@@ -112,10 +112,14 @@
   }
 }
 
+.about__popup-window-close-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .close-button {
   position: absolute;
-  top: 40%;
-  right: 33%;
   background: none;
   border: 2px solid;
   border-radius: 10px;
@@ -125,6 +129,12 @@
   color: #090909;
   width: 35px;
   height: 25px;
+  transition: 0.8s ease-in-out; /* goes back to its size when hover away slowly */
+}
+
+.close-button:hover {
+  font-size: 24px;
+  transition: 1s ease-in-out;
 }
 
 .popup__download-list {
@@ -147,6 +157,14 @@
   border: 2px solid;
   border-radius: 10px;
   height: 45px;
+}
+/* when mouse is hover about  */
+.popup__download-button:hover {
+  color: #ffd426;
+}
+/* when button is clicked */
+.popup__download-button:active {
+  color: #30db5b;
 }
 
 /* MOBILE VERSION */

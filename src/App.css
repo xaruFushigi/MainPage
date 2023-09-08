@@ -3,6 +3,7 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #000000;
 }
 
 button {
@@ -13,48 +14,29 @@ button {
   width: 140px;
   border: transparent;
   cursor: pointer;
-  background: #3d4145;
+  background: #aeaeb2;
   padding: 10px;
 }
 
 .button-link {
   color: #fff;
   text-decoration: none;
+  background-color: #aeaeb2;
 }
-
+/* Dark mode variables */
 :root {
-  --background-color: #ffffff; /* Default light mode background color */
-  --text-color: #000000; /* Default light mode text color */
-}
-
-html,
-body {
-  scroll-behavior: smooth;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  --background-color-light: #ffffff;
+  --text-color-light: #000000;
+  --background-color-dark: #000000;
+  --text-color-dark: #ffffff;
 }
 
 /* Dark mode variables */
-/* .dark-mode {
-  --background-color: #000000;
-  --text-color: #ffffff;
-} */
-
 .dark-mode {
-  --background-color: #000000;
-  --text-color: #ffffff;
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
-
 .light-mode {
-  --background-color: #46045e
-  --text-color: #090909;
-}
-
-.app {
-  background-color: var(
-    --background-color,
-  ); /* Default light mode background color */
-  color: var(--text-color); /* Default light mode text color */
-  transition: background-color 1.5s, color 1s; /* Only transition the background-color and color properties */
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
 }

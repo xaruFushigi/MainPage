@@ -16,7 +16,7 @@ const AddProject = () => {
   const initialValues = {
     nameOfProject: "",
     urlOfProject: "",
-    imageOfProject: null,
+    imageOfProject: "",
   };
 
   const validationSchema = Yup.object().shape({

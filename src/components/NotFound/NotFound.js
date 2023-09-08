@@ -10,7 +10,6 @@ const NotFound = () => {
       <h3>Try these link:</h3>
       <div className="flex flex-column">
         <Link to="/">Home </Link>
-        <Link to="/">Home </Link>
         <Link to="/login"> LogIn</Link>
         <Link to="/register"> Register New User </Link>
       </div>

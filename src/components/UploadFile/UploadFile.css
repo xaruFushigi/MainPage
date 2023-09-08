@@ -1,0 +1,18 @@
+.uploadFile__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadFile_list-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.uploadFile__list {
+  display: flex;
+  flex-direction: row;
+}
+.uploadFile__list-item {
+  list-style: none;
+  margin-left: 10px;
+}

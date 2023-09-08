@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   justify-content: flex-end;
-  background-color: #0f0f0f; /* */
+  background-color: #141415; /* */
   padding: 10px 20px;
   position: fixed;
   top: 0;
@@ -73,14 +73,14 @@
   color: #fff;
   text-decoration: none;
   line-height: 40px; /* Set the line height to match the navigation bar's height. help with navbar not increasing in size when font size increases */
-  transition: font-size 0.8s ease-in-out;
+  transition: font-size 0.8s ease-in-out; /* goes back to its size when hover away slowly */
   /* Link styles */
 }
 
 .navigation__link:hover {
   font-size: 24px;
 }
-/* increases size when clicked */
+/* increases size of section when clicked in the navbar  */
 .navigation__link.active {
   font-size: 24px; /* Set the desired font size */
   transition: font-size 0.3s ease-in-out;

@@ -5,33 +5,32 @@ import "./UploadFile.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 // icons
-import HttpIcon from "@mui/icons-material/Http";
-import ImageIcon from "@mui/icons-material/Image";
 import DnsIcon from "@mui/icons-material/Dns";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const UploadFile = () => {
-  const [uploadImage, setUploadImage] = useState(null);
+  const [uploadResume, setUploadResume] = useState(null);
+  const [typeOfUploadFile, setTypeOfUploadFile] = useState("");
 
   const initialValues = {
-    nameOfProject: "",
-    urlOfProject: "",
-    imageOfProject: null,
+    nameOfResume: "",
+    typeOfResume: "",
+    uploadResume: "", // Initialize with an empty string
   };
 
   const validationSchema = Yup.object().shape({
-    nameOfProject: Yup.string().min(1).max(64).required(),
-    urlOfProject: Yup.string().min(1).max(100).required(),
+    nameOfResume: Yup.string().required("Name is required"),
+    typeOfResume: Yup.string().required("Type is required"),
   });
-  // send request to back-end of formik
-  const onSubmitContact = async (event) => {
+
+  const onSubmitResume = async (event) => {
     try {
       const formData = new FormData();
-      formData.append("imageOfProject", uploadImage);
-      formData.append("nameOfProject", event.nameOfProject);
-      formData.append("urlOfProject", event.urlOfProject);
+      formData.append("uploadResume", uploadResume);
+      formData.append("typeOfResume", event.typeOfResume);
+      formData.append("nameOfResume", event.nameOfResume);
 
-      const response = await fetch("http://localhost:10000/auth/addProject", {
+      const response = await fetch("http://localhost:10000/auth/uploadResume", {
         method: "POST",
         body: formData,
         mode: "cors",
@@ -43,21 +42,26 @@ const UploadFile = () => {
       console.log(error);
     }
   };
+
+  const GetRadioButtonValue = (event) => {
+    setTypeOfUploadFile(event.target.value);
+  };
+
   return (
-    <div className="addProject__container">
+    <div className="uploadFile__container">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={onSubmitContact}
+        onSubmit={onSubmitResume}
       >
         <Form className="addProject__formik-container">
           <div className="input-row">
-            {/* Name */}
+            {/* Name of Resume */}
             <div className="addProject__formik-input-error-message-container">
               <DnsIcon sx={{ fontSize: 30 }} />
-              <label name="nameOfProject">Resume/CV :</label>
+              <label name="nameOfResume">Resume/CV :</label>
               <ErrorMessage
-                name="nameOfProject"
+                name="nameOfResume"
                 component="div"
                 className="error-message"
               />
@@ -65,22 +69,55 @@ const UploadFile = () => {
 
             <Field
               autoComplete="off"
+              type="text"
               id="inputAddProjectForm"
-              name="nameOfProject"
-              placeholder="Name Of Project"
+              name="nameOfResume"
+              placeholder="Resume Name"
             />
           </div>
 
-          {/* Image */}
+          {/* File resume */}
           <div className="input-row">
             <Field
               autoComplete="off"
               id="inputContactForm"
-              name="imageOfProject"
+              name="uploadResume"
               type="file"
               accept=".pdf,.xlsx,.xls"
-              onChange={(event) => setUploadImage(event.target.files[0])}
+              onChange={(event) => setUploadResume(event.target.files[0])}
             />
+          </div>
+
+          <div className="uploadFile_list-container">
+            <ul className="uploadFile__list">
+              <li className="uploadFile__list-item">
+                <input
+                  type="radio"
+                  name="typeOfResume"
+                  value="cv_english"
+                  onChange={(e) => GetRadioButtonValue(e)}
+                />
+                <label name="cv">CV English</label>
+              </li>
+              <li className="uploadFile__list-item">
+                <input
+                  type="radio"
+                  name="typeOfResume"
+                  value="cv_japanese"
+                  onChange={(e) => GetRadioButtonValue(e)}
+                />
+                <label name="cv">CV Japanese</label>
+              </li>
+              <li className="uploadFile__list-item">
+                <input
+                  type="radio"
+                  name="typeOfResume"
+                  value="resume_japanese"
+                  onChange={(e) => GetRadioButtonValue(e)}
+                />
+                <label name="cv">Resume Japanese</label>
+              </li>
+            </ul>
           </div>
           <button type="submit">
             <CloudUploadIcon /> Send

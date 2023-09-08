@@ -4,7 +4,7 @@ import { MyContext } from "./Context/ContextProvider";
 // CSS
 import "./App.css";
 import "tachyons";
-// JSå
+// JS
 import {
   Navbar,
   Body,
@@ -21,7 +21,6 @@ import {
 
 function App() {
   const { isDarkMode } = useContext(MyContext);
-
   return (
     <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <BrowserRouter>

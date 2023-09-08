@@ -1,9 +1,14 @@
 import React from "react";
 import "./MainBody.css";
+import StarsCanvas from "../../../Stars";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Main = () => {
+  let { scrollYProgress } = useScroll();
+  let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   return (
-    <div id="home" className="section">
+    <motion.div style={{ y }} id="home" className="section">
+      <StarsCanvas />
       <div className="MainBody-container">
         <div className="MainBody-box">
           <h1 className="MainBody__body-title">
@@ -16,7 +21,7 @@ const Main = () => {
           </h3>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
