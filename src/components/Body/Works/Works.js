@@ -67,7 +67,7 @@ const Works = () => {
     });
   };
   return (
-    <motion.div
+    <div
       style={{ y }}
       id="works"
       className="works-container section"
@@ -80,7 +80,7 @@ const Works = () => {
       <Scroll>
         <div className="works__container-projects">{MapProjects()}</div>
       </Scroll>
-    </motion.div>
+    </div>
   );
 };
 

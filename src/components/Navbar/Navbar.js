@@ -42,7 +42,10 @@ const Navbar = () => {
   return (
     <div>
       <div className={`navigation ${isNavOpen ? "open" : ""}`}>
-        <button className="navigation__toggle" onClick={toggleIsNavOpenOnClick}>
+        <button
+          className={`navigation__toggle ${isNavOpen ? "open" : ""}`}
+          onClick={toggleIsNavOpenOnClick}
+        >
           {isNavOpen ? <MenuIcon /> : <MenuOpenIcon />}
         </button>
         {/* LEFT SIDE */}
@@ -212,7 +215,7 @@ const Navbar = () => {
                 <li
                   className={`navigation__theme-changer-container ${
                     isFlipped ? "flipped" : "not-flipped"
-                  }`}
+                  } `}
                   onClick={handleFlip}
                 >
                   <button
@@ -228,6 +231,15 @@ const Navbar = () => {
                         <LightModeIcon className="white" />
                       </div>
                     )}
+                  </button>
+                </li>
+                {/* menu button for mobile */}
+                <li className="navigation__item">
+                  <button
+                    className="navigation__toggle"
+                    onClick={toggleIsNavOpenOnClick}
+                  >
+                    {isNavOpen ? <MenuIcon /> : <MenuOpenIcon />}
                   </button>
                 </li>
               </>

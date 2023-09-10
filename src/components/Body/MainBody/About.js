@@ -41,12 +41,7 @@ const About = () => {
   let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
-    <motion.div
-      style={{ y }}
-      className="About-container section"
-      id="about"
-      ref={worksRef}
-    >
+    <div className="About-container section" id="about" ref={worksRef}>
       {/* <StarsCanvas /> */}
       <div className="about-sub-container">
         {/* profile image */}
@@ -65,10 +60,12 @@ const About = () => {
               <div className="about__about-me-section-text-container">
                 <h1 className="">About Me</h1>
                 <p className="about__about-me-section-text">
-                  Use this bio section as your way of describing yourself and
-                  saying what you do, what technologies you like <br /> to use
-                  or feel most comfortable with, describing your personality, or
-                  whatever else you feel like throwing in
+                  My name is Bokhodir. Graduated from Tsukuba University, Japan
+                  in 2021 August 31st. Working in PKUTECH Co. ltd. since 2022
+                  April 1st as System Engineer. Have expirience as Project
+                  Manger Assistant and REST API developer in current company.
+                  Have been improving my Web Developer skills for more than one
+                  and half year
                 </p>
               </div>
             </section>
@@ -78,7 +75,6 @@ const About = () => {
             {/* Contact Details */}
             <div className="about__contact-details-container">
               <div className="about__contact-details-details">
-                <h1>Contact Details</h1>
                 <div className="about__contact-details-link">
                   {/* GitHub button */}
                   <div className="ma1">
@@ -108,6 +104,78 @@ const About = () => {
                     </button>
                   </div>
                 </div>
+              </div>
+            </div>
+            {/* work exprience section */}
+            <div className="about__contact-details-section-work-expirience-container">
+              {/* SAP project expirience */}
+              <div className="about__contact-details-section-work-expirience">
+                <p>2022-May ~ 2022 November</p>
+                <p>Client: Fujitsu Co.</p>
+                <p>
+                  Position: Assistant of Project Manager at Project Progress
+                  Team
+                </p>
+                <div className="work">
+                  <p>Work:</p>
+                  <p>
+                    Demonstrated expertise in handling projects, driving process
+                    improvements, and ensuring compliance.
+                  </p>
+                  <p></p>
+                  <p>
+                    Collected progress related data of the team members in their
+                    accomplishing tasks. Prepared necessary task related
+                    documents of the team members in
+                    <span className="highlight-text">
+                      Yakushin, ServiceNow, and Alfresco
+                    </span>
+                    . Participated in Meetings to take notes (議事録) and
+                    organized meetings
+                  </p>
+                </div>
+              </div>
+
+              {/* PEGA project expirience */}
+              <div className="about__contact-details-section-work-expirience">
+                <p>2022-November ~ Present</p>
+                <p> Client: Mitsubushi UFJ</p>
+                <p>Position: REST API Developer</p>
+                <div className="work">
+                  <p>Work:</p>
+                  <p>
+                    Demonstrated expertise in handling projects, driving process
+                    improvements, and ensuring compliance.
+                  </p>
+                  <p></p>
+                  <p>
+                    Work: Build JBoss JAX-RS RESTEasy API for the purpose of
+                    building communicating between servers to transfer client
+                    data. Complied with{" "}
+                    <span className="highlight-text">
+                      Service Level Agreement (SLA){" "}
+                    </span>{" "}
+                    with security concerns of the client. For PoC purpose at
+                    presentation for the client build front-end using{" "}
+                    <span className="highlight-text">React.js and CSS </span>{" "}
+                    and back-end managed with{" "}
+                    <span className="highlight-text">
+                      Node.js and Express.js
+                    </span>
+                    .
+                  </p>
+                </div>
+              </div>
+
+              {/* Language abilities */}
+              <div className="about__contact-details-section-work-expirience">
+                <p>
+                  Language abilities in{" "}
+                  <span className="highlight-text">English</span> (Fluent),
+                  <span className="highlight-text"> Japanese</span>
+                  (Business), and <span className="highlight-text">Uzbek</span>
+                  (Native)
+                </p>
               </div>
               {/* Resume Pop-Up */}
               <div className={`about__contact-details-resum `}>
@@ -152,7 +220,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
