@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
+// download functionality
+import FileDownload from "js-file-download";
 // icons
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -7,11 +9,10 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 // CSS
 import "./About.css";
 // Image
-import profileImage from "./images/profile.png";
+import profileImage from "./../../../assets/profile.png";
 // Parallax
 import { motion, useScroll, useTransform } from "framer-motion";
-// animations
-import StarsCanvas from "../../../Stars";
+// context
 import { MyContext } from "../../../Context/ContextProvider";
 const About = () => {
   const location = useLocation();
@@ -22,13 +23,52 @@ const About = () => {
     setIsPopUpWindowForDownloadResumeOpen,
   ] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
   // toggle button to Open Pop Up window for CV download
   const togglePopUpWindowForDownloadResume = () => {
     setIsPopUpWindowForDownloadResumeOpen((prevCondition) => !prevCondition);
   };
   const closePopUp = () => {
     setIsOpen(false);
+  };
+  //donwload CV
+  const DownloadResumeByType = async (event) => {
+    try {
+      const response = await fetch(
+        `http://localhost:10000/auth/downloadResume?resumeType=${event}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "Content-Disposition" },
+        }
+      );
+      if (response.ok) {
+        const blob = await response.blob();
+        console.log(blob);
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary anchor element to trigger the download
+        const a = document.createElement("a");
+        a.href = url;
+        if (event == "cv_english") {
+          a.download = "cv_english_Bokhodir_Ziedullaev.docx"; // Set the desired filename
+        } else if (event == "cv_japanese") {
+          a.download = "cv_japanese_Bokhodir_Ziedullaev.docx"; // Set the desired filename
+        } else if (event == "resume_japanese") {
+          a.download = "japanese_resume_Bokhodir_Ziedullaev.xlsx"; // Set the desired filename
+        } else {
+          throw new Error("something went wrong");
+        }
+        a.style.display = "none";
+
+        document.body.appendChild(a);
+        a.click();
+
+        // Clean up by revoking the blob URL and removing the anchor element
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     // Scroll to the "About" section when the component mounts
@@ -196,17 +236,30 @@ const About = () => {
                         <h2 className="black">Download Options</h2>
                         <ul className="popup__download-list">
                           <li className="popup__download-list-item">
-                            <button className="popup__download-button">
+                            <button
+                              className="popup__download-button"
+                              onClick={() => DownloadResumeByType("cv_english")}
+                            >
                               <CloudDownloadIcon /> CV English
                             </button>
                           </li>
                           <li className="popup__download-list-item">
-                            <button className="popup__download-button">
+                            <button
+                              className="popup__download-button"
+                              onClick={() =>
+                                DownloadResumeByType("cv_japanese")
+                              }
+                            >
                               <CloudDownloadIcon /> CV Japanese
                             </button>
                           </li>
                           <li className="popup__download-list-item">
-                            <button className="popup__download-button">
+                            <button
+                              className="popup__download-button"
+                              onClick={() =>
+                                DownloadResumeByType("resume_japanese")
+                              }
+                            >
                               <CloudDownloadIcon /> Resume Japanese
                             </button>
                           </li>

@@ -1,3 +1,19 @@
+/* Add styling for the custom file input and label */
+.custom-file-input {
+  position: absolute;
+}
+
+.custom-file-label {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  /* Apply your existing styles */
+  display: flex;
+  flex-direction: row;
+}
+
 .uploadFile__container {
   display: flex;
   justify-content: center;
@@ -8,10 +24,12 @@
   display: flex;
   justify-content: flex-start;
 }
+
 .uploadFile__list {
   display: flex;
   flex-direction: row;
 }
+
 .uploadFile__list-item {
   list-style: none;
   margin-left: 10px;

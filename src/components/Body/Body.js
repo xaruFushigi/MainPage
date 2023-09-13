@@ -1,13 +1,13 @@
 import React from "react";
 import Contact from "./Contact/Contact";
-import About from "./MainBody/About";
-import Main from "./MainBody/MainBody";
+import About from "./About/About";
+import Home from "./Home/Home";
 import Works from "./Works/Works";
 
 const Body = () => {
   return (
     <div>
-      <Main />
+      <Home />
       <About />
       <Works />
       <Contact />

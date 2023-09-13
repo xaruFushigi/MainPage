@@ -24,15 +24,6 @@
   justify-content: center;
 }
 
-.MainBody__body-GitHubButton {
-  border-radius: 7px;
-  padding: 6%;
-  width: 180px;
-  border: transparent;
-  cursor: pointer;
-  background: #3d4145;
-}
-
 .MainBody__body--GitHubButton-link {
   display: flex;
   align-items: center;

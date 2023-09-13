@@ -17,6 +17,7 @@ const Contact = () => {
   // to be able to open contact section at press from other routes
   const location = useLocation();
   const worksRef = useRef(null); // Create a ref for the "contact" section
+  // initial values of formik inputs
   const initialValues = {
     name: "",
     email: "",
@@ -25,16 +26,22 @@ const Contact = () => {
   };
   // validation schema for Formik
   const validationSchema = Yup.object().shape({
-    name: Yup.string().min(2).max(64).required(),
+    name: Yup.string().min(2).max(64).required("Please, fill 'Name' input"),
     email: Yup.string().min(0).max(30),
-    subject: Yup.string().min(3).max(20).required(),
-    message: Yup.string().min(3).max(120).required(),
+    subject: Yup.string()
+      .min(3)
+      .max(20)
+      .required("Please, full 'Subject' input"),
+    message: Yup.string()
+      .min(3)
+      .max(120)
+      .required("Please, fill 'message text box'"),
   });
   // toggle PopUpWindow
   const togglePopUpWindow = () => {
     setEmailFromUser((prevState) => !prevState);
   };
-  // on Submit button of Formik
+
   const onSubmitContact = async (event) => {
     try {
       // Handle form submission logic
@@ -60,7 +67,7 @@ const Contact = () => {
       console.log(error);
     }
   };
-
+  // use effect
   useEffect(() => {
     // Scroll to the "Contact" section when the component mounts
     if (location.hash === "#contact") {
@@ -74,7 +81,11 @@ const Contact = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={onSubmitContact}
+          onSubmit={(values, { resetForm }) => {
+            console.log(values);
+            onSubmitContact(values);
+            resetForm({ values: "" }); // resets input box's value
+          }}
         >
           <Form className="contact__formik-container">
             <div className="input-row">

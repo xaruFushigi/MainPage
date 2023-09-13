@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.4.3",
     "framer-motion": "^10.16.2",
+    "js-file-download": "^0.4.12",
     "particles-bg": "^2.5.5",
     "random-esm": "^4.2.0",
     "react": "^18.2.0",

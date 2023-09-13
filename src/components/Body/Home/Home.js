@@ -1,6 +1,6 @@
 import React from "react";
 // CSS
-import "./MainBody.css";
+import "./Home.css";
 // stars 3D animation
 import StarsCanvas from "../../../Stars";
 // framer-motion
