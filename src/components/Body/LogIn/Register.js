@@ -30,7 +30,7 @@ const Register = () => {
   const onSubmitRegisterButton = async (event) => {
     try {
       const response = await fetch(
-        "http://localhost:10000/auth/register/checkUserInfo",
+        "https://mainpage-back-end.onrender.com/auth/register/checkUserInfo",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
