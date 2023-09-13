@@ -15,7 +15,7 @@ const Works = () => {
   const FetchProjectsFromDatabase = async () => {
     try {
       const response = await fetch(
-        "http://localhost:10000/project/allProjects",
+        "https://mainpage-back-end.onrender.com/project/allProjects",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
