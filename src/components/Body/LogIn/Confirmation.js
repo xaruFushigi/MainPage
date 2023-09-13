@@ -32,7 +32,7 @@ const Confirmation = () => {
   const onSubmitRegisterButton = async (event) => {
     try {
       if (event.password === event.confirmpassword) {
-        const response = await fetch(`http://localhost:10000/auth/register`, {
+        const response = await fetch(`https://mainpage-back-end.onrender.com/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
