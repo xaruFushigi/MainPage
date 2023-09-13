@@ -31,7 +31,7 @@ const AddProject = () => {
       formData.append("nameOfProject", event.nameOfProject);
       formData.append("urlOfProject", event.urlOfProject);
 
-      const response = await fetch("http://localhost:10000/auth/addProject", {
+      const response = await fetch("https://mainpage-back-end.onrender.com/auth/addProject", {
         method: "POST",
         body: formData,
         mode: "cors",
