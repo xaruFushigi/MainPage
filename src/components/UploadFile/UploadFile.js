@@ -44,7 +44,7 @@ const UploadFile = () => {
       formData.append("typeOfResume", typeOfUploadFile);
       formData.append("nameOfResume", resumeName);
 
-      const response = await fetch("http://localhost:10000/auth/uploadResume", {
+      const response = await fetch("https://mainpage-back-end.onrender.com/auth/uploadResume", {
         method: "POST",
         body: formData,
         mode: "cors",
