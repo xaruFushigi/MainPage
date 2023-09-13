@@ -34,7 +34,7 @@ const About = () => {
   const DownloadResumeByType = async (event) => {
     try {
       const response = await fetch(
-        `http://localhost:10000/auth/downloadResume?resumeType=${event}`,
+        `https://mainpage-back-end.onrender.com/auth/downloadResume?resumeType=${event}`,
         {
           method: "GET",
           headers: { "Content-Type": "Content-Disposition" },
