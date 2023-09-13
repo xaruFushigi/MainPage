@@ -62,7 +62,7 @@ const ContextProvider = (props) => {
   };
   const FetchValidToken = async () => {
     try {
-      const response = await fetch("http://localhost:10000/auth/validToken", {
+      const response = await fetch("https://mainpage-back-end.onrender.com/auth/validToken", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
