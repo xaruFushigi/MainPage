@@ -35,7 +35,7 @@ const Profile = () => {
   const FetchUserDataForProfile = async () => {
     try {
       const response = await fetch(
-        `http://localhost:10000/auth/profile/byId/${profileId}`,
+        `https://mainpage-back-end.onrender.com/auth/profile/byId/${profileId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +56,7 @@ const Profile = () => {
   const OnSubmitChangePasswordOfUser = async (event) => {
     try {
       const response = await fetch(
-        "http://localhost:10000/auth/changePassword",
+        "https://mainpage-back-end.onrender.com/auth/changePassword",
         {
           method: "PUT",
           headers: {
@@ -82,7 +82,7 @@ const Profile = () => {
   // Delete user account
   const OnClickDeleteAccount = async () => {
     const response = await fetch(
-      `http://localhost:10000/auth/deleteAccount/${profileId}`,
+      `https://mainpage-back-end.onrender.com/auth/deleteAccount/${profileId}`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
