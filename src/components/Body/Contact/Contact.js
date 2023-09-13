@@ -45,7 +45,7 @@ const Contact = () => {
   const onSubmitContact = async (event) => {
     try {
       // Handle form submission logic
-      const response = await fetch("http://localhost:10000/auth/sendMessage", {
+      const response = await fetch("https://mainpage-back-end.onrender.com/auth/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
