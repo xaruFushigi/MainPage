@@ -35,7 +35,6 @@ const LogIn = () => {
           password: event.password,
         }),
         mode: "cors",
-        credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
