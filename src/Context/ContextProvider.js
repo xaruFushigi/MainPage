@@ -68,6 +68,7 @@ const ContextProvider = (props) => {
           "Content-Type": "application/json",
           accessToken: getItemFromLocalStorage,
         },
+        mode : 'cors'
       });
       if (response.ok) {
         const data = await response.json();
