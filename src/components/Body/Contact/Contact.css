@@ -150,7 +150,7 @@
 }
 
 /* MOBILE VERSION */
-@media (max-width: 390px) {
+@media (max-width: 428px) {
   .contact {
     display: flex;
     flex-direction: column;
