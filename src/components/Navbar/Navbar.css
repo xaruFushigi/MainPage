@@ -142,7 +142,7 @@
 }
 
 /* MOBILE VERSION */
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 428px) {
   .navigation {
     display: flex;
     justify-content: flex-end;
