@@ -207,7 +207,7 @@
 }
 
 /* MOBILE VERSION */
-@media (max-width: 390px) {
+@media (max-width: 428px) {
   .About-container {
     display: flex;
     flex-direction: column;
