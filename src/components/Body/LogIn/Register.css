@@ -69,7 +69,7 @@ span {
 }
 
 /* MOBILE VERSION */
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 428px) {
   .register-container {
     display: flex;
     justify-content: center;
