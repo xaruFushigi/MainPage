@@ -32,13 +32,16 @@
   text-decoration: none;
 }
 
-/* .MainBody__footer--scrolldown {
-  position: fixed;
-  bottom: 0;
-  padding-bottom: 10px;
-  font-size: large;
-  cursor: pointer;
-} */
+/* MOBILE VERSION landscape */
+@media (max-width: 926px) {
+  .MainBody-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 926px;
+  }
+}
 
 /* MOBILE VERSION */
 @media (max-width: 428px) {
