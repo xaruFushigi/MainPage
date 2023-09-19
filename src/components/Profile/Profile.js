@@ -41,7 +41,7 @@ const Profile = () => {
   const FetchUserDataForProfile = async () => {
     try {
       const response = await fetch(
-        `http://localhost:10000/auth/profile/byId/${profileId}`,
+        `https://mainpage-back-end.onrender.com/auth/profile/byId/${profileId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
