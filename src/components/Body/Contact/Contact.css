@@ -169,10 +169,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 390px;
+    width: 420px;
     height: auto;
     padding: 20px;
     border: 5px solid #191919;
     border-radius: 10px;
+  }
+
+  #inputContactForm {
+    min-width: 350px;
   }
 }
