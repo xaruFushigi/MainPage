@@ -151,6 +151,7 @@ const About = () => {
               {/* SAP project expirience */}
               <div className="about__contact-details-section-work-expirience">
                 <p>2022-May ~ 2022 November</p>
+                <p>Employer: PKUTECH Co. ltd.</p>
                 <p>Client: Fujitsu Co.</p>
                 <p>
                   Position: Assistant of Project Manager at Project Progress
@@ -179,6 +180,7 @@ const About = () => {
               {/* PEGA project expirience */}
               <div className="about__contact-details-section-work-expirience">
                 <p>2022-November ~ Present</p>
+                <p>Employer: PKUTECH Co. ltd.</p>
                 <p> Client: Mitsubushi UFJ</p>
                 <p>Position: REST API Developer</p>
                 <div className="work">
