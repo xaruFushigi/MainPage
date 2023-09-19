@@ -101,7 +101,84 @@
   height: 30px;
 }
 
-/* MOBILE VERSION */
+/* MOBILE VERSION portraint */
+@media (max-width: 926px) {
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw; /* 100% of viewport width */
+    height: 110vh; /* 110% of viewport height */
+    max-width: 926px;
+  }
+
+  .profile__profile-information-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 150px;
+  }
+
+  .profile-profile-information {
+    margin-left: 50px;
+  }
+
+  .profile__buttons-container {
+    margin-left: 50px;
+  }
+  .profile-change-passsword-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+  }
+
+  .confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .profile__delete-account-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+  .profile__delete-account {
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid;
+    border-radius: 10px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  /* button theme for light theme */
+  .profile__button-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #ffffff;
+  }
+  /* button theme for dark theme */
+  .profile__button-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #000000;
+  }
+}
+
+/* MOBILE VERSION portraint */
 @media (max-width: 428px) {
   .profile__container {
     display: flex;
@@ -110,6 +187,7 @@
     align-items: center;
     width: 100vw; /* 100% of viewport width */
     height: 110vh; /* 90% of viewport height */
+    max-width: 428px;
   }
 
   .profile__profile-information-container {
@@ -118,6 +196,13 @@
     width: 100%;
   }
 
+  .profile-profile-information {
+    margin-left: 50px;
+  }
+
+  .profile__buttons-container {
+    margin-left: 50px;
+  }
   .profile-change-passsword-container {
     display: flex;
     flex-direction: column;
@@ -150,7 +235,7 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    color: #191919;
+    color: #ffffff;
   }
   /* button theme for dark theme */
   .profile__button-dark {
@@ -158,6 +243,6 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    color: #fff;
+    color: #000000;
   }
 }
