@@ -28,14 +28,20 @@ const Profile = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    oldPassword: Yup.string().min(1).max(64).required(),
-    newPassword: Yup.string().min(1).max(100).required(),
+    oldPassword: Yup.string()
+      .min(1)
+      .max(64)
+      .required("Please, fill out your old password"),
+    newPassword: Yup.string()
+      .min(1)
+      .max(100)
+      .required("Please, fill out confirm password field"),
   });
   // fetch user's data from database
   const FetchUserDataForProfile = async () => {
     try {
       const response = await fetch(
-        `https://mainpage-back-end.onrender.com/auth/profile/byId/${profileId}`,
+        `http://localhost:10000/auth/profile/byId/${profileId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +62,7 @@ const Profile = () => {
   const OnSubmitChangePasswordOfUser = async (event) => {
     try {
       const response = await fetch(
-        "https://mainpage-back-end.onrender.com/auth/changePassword",
+        "http://localhost:10000/auth/changePassword",
         {
           method: "PUT",
           headers: {
@@ -82,7 +88,7 @@ const Profile = () => {
   // Delete user account
   const OnClickDeleteAccount = async () => {
     const response = await fetch(
-      `https://mainpage-back-end.onrender.com/auth/deleteAccount/${profileId}`,
+      `http://localhost:10000/auth/deleteAccount/${profileId}`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
@@ -156,105 +162,124 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {/* Change Password Form */}
-        <div
-          className={`profile-change-passsword-container ${
-            changePassword ? "none" : "hidden"
-          }`}
-        >
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={OnSubmitChangePasswordOfUser}
+        <div className="confirmation-container">
+          {/* Change Password Form */}
+          <div
+            className={`profile-change-passsword-container ${
+              changePassword ? "none" : "hidden"
+            }`}
           >
-            <Form>
-              {/* Old Password */}
-              <div className="">
-                <div className="flex justify-start items-center">
-                  <label name="oldPassword">Old Password :</label>
-                  <div
-                    className={`${changePassword ? "error-message" : "hidden"}`}
-                  >
-                    <ErrorMessage name="newPassword" component="div" />
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={OnSubmitChangePasswordOfUser}
+            >
+              <Form>
+                {/* Old Password */}
+                <div className="">
+                  <div className="flex justify-start items-center">
+                    <label name="oldPassword">Old Password :</label>
+                    <div
+                      className={`${
+                        changePassword ? "error-message" : "hidden"
+                      }`}
+                    >
+                      <ErrorMessage name="oldPassword" component="div" />
+                    </div>
                   </div>
+                  <Field
+                    autoComplete="off"
+                    id="inputAddProjectForm"
+                    name="oldPassword"
+                    placeholder="Old Password"
+                    type="password"
+                    className="flex justify-start"
+                  />
                 </div>
-                <Field
-                  autoComplete="off"
-                  id="inputAddProjectForm"
-                  name="oldPassword"
-                  placeholder="Old Password"
-                  type="password"
-                  className="flex justify-start"
-                />
-              </div>
-              {/* New Password */}
-              <div>
-                <div className="flex justify-start items-center">
-                  <label name="newPassword">New Password :</label>
-                  <div
-                    className={`${changePassword ? "error-message" : "hidden"}`}
-                  >
-                    <ErrorMessage name="newPassword" component="div" />
+                {/* New Password */}
+                <div>
+                  <div className="flex justify-start items-center">
+                    <label name="newPassword">New Password :</label>
+                    <div
+                      className={`${
+                        changePassword ? "error-message" : "hidden"
+                      }`}
+                    >
+                      <ErrorMessage name="newPassword" component="div" />
+                    </div>
                   </div>
+                  <Field
+                    autoComplete="off"
+                    id="inputAddProjectForm"
+                    name="newPassword"
+                    placeholder="New Password"
+                    type="password"
+                    className="flex justify-start"
+                  />
                 </div>
-                <Field
-                  autoComplete="off"
-                  id="inputAddProjectForm"
-                  name="newPassword"
-                  placeholder="New Password"
-                  type="password"
-                  className="flex justify-start"
-                />
-              </div>
 
-              <div className="submit-button-container">
+                <div className="submit-button-container">
+                  <button
+                    type="submit"
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "profile__button-light"
+                        : "profile__button-dark"
+                    } `}
+                  >
+                    <ChangeCircleIcon /> Change Password
+                  </button>
+
+                  <button
+                    className={` ${
+                      localStorageThemeColor === "dark"
+                        ? "profile__button-light"
+                        : "profile__button-dark"
+                    } `}
+                    onClick={() => {
+                      setChangePassword((prevData) => !prevData);
+                    }}
+                  >
+                    <CancelIcon /> Cancel
+                  </button>
+                </div>
+              </Form>
+            </Formik>
+          </div>
+          {/* Confirmation of deleting Account */}
+          <div
+            className={`profile__delete-account-container ${
+              deleteAccount ? "" : "hidden"
+            }`}
+          >
+            Confirm Account Delete
+            <div className="profile__delete-account">
+              <div>
                 <button
-                  type="submit"
                   className={` ${
                     localStorageThemeColor === "dark"
                       ? "profile__button-light"
                       : "profile__button-dark"
                   } `}
+                  onClick={() => {
+                    setDeleteAccount((prevData) => !prevData);
+                  }}
                 >
-                  <ChangeCircleIcon /> Change Password
+                  <CancelIcon /> Cancel
                 </button>
               </div>
-            </Form>
-          </Formik>
-        </div>
-        {/* Confirmation of deleting Account */}
-        <div
-          className={`profile__delete-account-container ${
-            deleteAccount ? "" : "hidden"
-          }`}
-        >
-          Confirm Account Delete
-          <div className="profile__delete-account">
-            <div>
-              <button
-                className={` ${
-                  localStorageThemeColor === "dark"
-                    ? "profile__button-light"
-                    : "profile__button-dark"
-                } `}
-                onClick={() => {
-                  setDeleteAccount((prevData) => !prevData);
-                }}
-              >
-                <CancelIcon /> Cancel
-              </button>
-            </div>
-            <div>
-              <button
-                className={` ${
-                  localStorageThemeColor === "dark"
-                    ? "profile__button-light"
-                    : "profile__button-dark"
-                } `}
-                onClick={OnClickDeleteAccount}
-              >
-                <DeleteIcon /> Delete Account
-              </button>
+              <div>
+                <button
+                  className={` ${
+                    localStorageThemeColor === "dark"
+                      ? "profile__button-light"
+                      : "profile__button-dark"
+                  } `}
+                  onClick={OnClickDeleteAccount}
+                >
+                  <DeleteIcon /> Delete Account
+                </button>
+              </div>
             </div>
           </div>
         </div>
