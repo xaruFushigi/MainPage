@@ -149,7 +149,7 @@
   transition: 0.8s ease-in-out;
 }
 
-/* MOBILE VERSION */
+/* MOBILE VERSION portrait */
 @media (max-width: 428px) {
   .contact {
     display: flex;
