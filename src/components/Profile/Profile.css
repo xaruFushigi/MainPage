@@ -110,6 +110,7 @@
     align-items: flex-start;
     width: 100vw; /* 100% of viewport width */
     height: 110vh; /* 110% of viewport height */
+    min-width: 429px;
     max-width: 926px;
   }
 
@@ -202,6 +203,11 @@
 
   .profile__buttons-container {
     margin-left: 50px;
+  }
+
+  .confirmation-container {
+    display: flex;
+    flex-direction: column;
   }
   .profile-change-passsword-container {
     display: flex;
