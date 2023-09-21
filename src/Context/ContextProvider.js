@@ -95,6 +95,7 @@ const ContextProvider = (props) => {
           id: 0,
           statusLoggedIn: false,
         });
+        localStorage.removeItem('accessToken'); // Clear the token from local storage
       }
     } catch (error) {
       console.log(error);
