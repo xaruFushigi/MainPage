@@ -24,12 +24,11 @@ const Main = () => {
       <div className="MainBody-container">
         <div className="MainBody-box">
           <h1 className="MainBody__body-title">
-            Welcome to the Main Page of Collection of the Projects
+            Welcome to the Main Page of the Collection of the Projects
           </h1>
           <h3 className="MainBody__body-text">
-            I am web developer and I use React.js for front-end and <br />
-            for back-end I use Node.js with Express.js and PostgreSQL as
-            database
+            I am a web developer and I use React.js for front-end and
+            for back-end I use Node.js with Express.js and PostgreSQL as database
           </h3>
           <div>
             <img src={reactjs} width={50} height={50} />
