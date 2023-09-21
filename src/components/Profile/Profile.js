@@ -252,7 +252,7 @@ const Profile = () => {
               deleteAccount ? "" : "hidden"
             }`}
           >
-            Confirm Account Delete
+            Confirm Account Deletion
             <div className="profile__delete-account">
               <div>
                 <button
