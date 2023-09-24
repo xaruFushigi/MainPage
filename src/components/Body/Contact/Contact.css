@@ -175,4 +175,10 @@
     border: 5px solid #191919;
     border-radius: 10px;
   }
+  .input-row {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    margin-bottom: 10px;
+    width: 350px;
+  }
 }
