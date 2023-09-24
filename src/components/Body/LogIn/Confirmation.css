@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: #ffffff;
+
 }
 /* button theme for dark theme */
 .confirmation__button-dark {
@@ -54,7 +54,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: #000000;
+
 }
 
 .hidden {
