@@ -9,7 +9,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 // CSS
 import "./About.css";
 // Image
-import profileImage from "./../../../assets/profile.png";
+import profileImage from "./../../../assets/IMG_2062.png";
 // Parallax
 import { motion, useScroll, useTransform } from "framer-motion";
 // context

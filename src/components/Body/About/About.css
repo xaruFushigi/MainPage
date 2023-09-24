@@ -13,9 +13,10 @@
 }
 
 .about__about-me-profile-picture {
-  border-radius: 50%;
+  border-radius: 10px;
   width: 250px;
-  height: 250px;
+  height: 450px;
+  z-index: 11;
 }
 
 .about__about-me-and-contact-details {
@@ -220,7 +221,7 @@
     align-items: center;
     width: 100vw; /* 100% of viewport width */
     height: 100vh; /* 100% of viewport height */
-    margin-top: 400px;
+    margin-top: 500px;
     margin-bottom: 400px;
     max-width: 926px;
   }
