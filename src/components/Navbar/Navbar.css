@@ -1,4 +1,5 @@
 /* DESKTOP VERSION */
+@media (min-width: 1024px) {
 /* Base styles for the navigation block */
 .navigation {
   display: flex;
@@ -140,9 +141,9 @@
   transform: rotateY(-180deg);
   border-radius: 25px;
 }
-
+}
 /* MOBILE VERSION landscape */
-@media (max-width: 926px) {
+@media (min-width: 926px) {
   .navigation {
     display: flex;
     justify-content: flex-end;
