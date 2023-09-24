@@ -15,6 +15,7 @@
 .works__container-projects {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 15px;
   width: 80vw; /* 100% of viewport width */
 }
@@ -33,4 +34,27 @@
 
 .scrollBar {
   height: 400px;
+}
+
+.__card-container {
+  display: grid;
+  grid-template-rows: repeat(3, 0.5fr);
+  grid-template-columns: repeat(4, 0fr);
+  border-radius: 10px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.card {
+  border: 3px solid #3d4145;
+  border-radius: 10px;
+  width: 288px;
+  background-color: #ffffff;
+}
+
+.__card-image {
+  width: 288px;
+  height: 180px;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 // ScrollBar
 import Scroll from "./Scroll";
 // CSS
@@ -25,6 +25,7 @@ const Works = () => {
       if (response.ok) {
         const data = await response.json();
         setProjects(data.projectsFromDatabase);
+        console.log(data.projectsFromDatabase);
       } else {
         throw new Error("failed to fetch projects");
       }
@@ -43,25 +44,26 @@ const Works = () => {
   // Stars scrolling configuration
   let { scrollYProgress } = useScroll();
   let y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
-
+  // mapping projects from database
   const MapProjects = () => {
     return projects.map((value, index) => {
       const OpenProject = () => {
         window.open(`${value.urlOfProject}`);
       };
       return (
-        <div className="project outline ma2 br2 growOnHover " key={index}>
-          <div className="pointer" onClick={OpenProject}>
-            <div className="b">{value.nameOfProject}</div>
-            <div>
+        <div className="__card-container" key={index}>
+          <Link onClick={OpenProject} style={{ textDecoration: "none" }}>
+            <div className="card">
               <img
                 src={`data:image/jpeg;base64,${value.imageOfProject}`}
-                alt="image_of_project"
-                width={250}
-                height={100}
+                alt="s"
+                width="280px"
+                height="180px"
+                className="__card-image"
               />
+              <p className="__card-text-title">{value.nameOfProject}</p>
             </div>
-          </div>
+          </Link>
         </div>
       );
     });
