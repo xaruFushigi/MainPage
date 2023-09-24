@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: "#000000"
+  color: "#ffffff"
 
 }
 /* button theme for dark theme */
@@ -55,7 +55,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: "#ffffff"
+  color: "#000000"
 }
 
 .hidden {
