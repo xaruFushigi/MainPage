@@ -156,6 +156,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  padding-right: 20px;
 }
 
 .close-button {
@@ -173,8 +174,9 @@
 }
 
 .close-button:hover {
-  font-size: 24px;
+  font-size: 20px;
   transition: 1s ease-in-out;
+  color: red;
 }
 
 .popup__download-list {
@@ -197,6 +199,8 @@
   border: 2px solid;
   border-radius: 10px;
   height: 45px;
+  border: 1px solid #000000;
+  color: #000000;
 }
 /* when mouse is hover about  */
 .popup__download-button:hover {
@@ -330,6 +334,7 @@
     background-color: white;
     border-radius: 10px;
     width: 100%;
+    width: 420px;
     z-index: 1;
   }
 
@@ -504,8 +509,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 10px;
-    width: 100%;
+    width: 400px;
     z-index: 1;
   }
 
@@ -534,13 +538,17 @@
     z-index: 2;
   }
 
+  .close-button:active {
+    color: red;
+  }
+
   .popup__download-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-right: 40px;
     z-index: 1;
+    padding: 10px 10px;
   }
 
   .popup__download-list-item {

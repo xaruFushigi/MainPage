@@ -220,7 +220,7 @@ const About = () => {
                 </p>
               </div>
               {/* Resume Pop-Up */}
-              <div className={`about__contact-details-resum `}>
+              <div className={`about__contact-details-resume `}>
                 {isPopUpWindowForDownloadResumeOpen && (
                   <div className={`about__popup-window-download-cv`}>
                     <div className={`popup`}>
