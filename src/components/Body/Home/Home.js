@@ -20,15 +20,15 @@ const Main = () => {
   let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   return (
     <div id="home" className="section">
-      {/* <StarsCanvas /> */}
+      <StarsCanvas />
       <div className="MainBody-container">
         <div className="MainBody-box">
           <h1 className="MainBody__body-title">
             Welcome to the Main Page of the Collection of the Projects
           </h1>
           <h3 className="MainBody__body-text">
-            I am a web developer and I use React.js for front-end and
-            for back-end I use Node.js with Express.js and PostgreSQL as database
+            I am a web developer and I use React.js for front-end and for
+            back-end I use Node.js with Express.js and PostgreSQL as database
           </h3>
           <div>
             <img src={reactjs} width={50} height={50} />
