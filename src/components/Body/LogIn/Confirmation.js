@@ -32,17 +32,20 @@ const Confirmation = () => {
   const onSubmitRegisterButton = async (event) => {
     try {
       if (event.password === event.confirmpassword) {
-        const response = await fetch(`https://mainpage-back-end.onrender.com/auth/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstname: user.firstname,
-            lastname: user.lastname,
-            username: user.username,
-            password: initialUser.password,
-          }),
-          mode: "cors",
-        });
+        const response = await fetch(
+          `https://mainpage-back-end.onrender.com/auth/register`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              firstname: user.firstname,
+              lastname: user.lastname,
+              username: user.username,
+              password: initialUser.password,
+            }),
+            mode: "cors",
+          }
+        );
         if (response.ok) {
           navigate("/login");
         } else {

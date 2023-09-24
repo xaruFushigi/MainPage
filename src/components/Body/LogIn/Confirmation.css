@@ -1,66 +1,65 @@
 @media (min-width: 1024px) {
-.confirmation__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw; /* 100% of viewport width */
-  height: 90vh; /* 90% of viewport height */
-}
+  .confirmation__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* 100% of viewport width */
+    height: 90vh; /* 90% of viewport height */
+  }
 
-.confirmation__formContainer {
-  width: 30%;
-  display: grid;
-  grid-template-rows: repeat(3, 0.1fr);
-  grid-template-columns: repeat(4, 0.5fr);
-  margin: 10px;
-  gap: 10px;
-}
+  .confirmation__formContainer {
+    width: 30%;
+    display: grid;
+    grid-template-rows: repeat(3, 0.1fr);
+    grid-template-columns: repeat(4, 0.5fr);
+    margin: 10px;
+    gap: 10px;
+  }
 
-.confirmation__form-input-light {
-  width: 80%;
-  border-radius: 10px;
-  border: transparent;
-  padding: 5px;
-  border: 2px solid #191919;
-  border-radius: 10px;
-}
+  .confirmation__form-input-light {
+    width: 80%;
+    border-radius: 10px;
+    border: transparent;
+    padding: 5px;
+    border: 2px solid #191919;
+    border-radius: 10px;
+  }
 
-.confirmation__form-input-dark {
-  width: 80%;
-  border-radius: 10px;
-  border: transparent;
-  padding: 5px;
-  border: 2px solid #fff;
-  border-radius: 10px;
-}
+  .confirmation__form-input-dark {
+    width: 80%;
+    border-radius: 10px;
+    border: transparent;
+    padding: 5px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+  }
 
-/* centers div content */
-.confirmation__div-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* button theme for light theme */
-.confirmation__button-light {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  color: "#000000"
+  /* centers div content */
+  .confirmation__div-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* button theme for light theme */
+  .confirmation__button-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #ffffff !important;
+  }
+  /* button theme for dark theme */
+  .confirmation__button-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #000000 !important;
+  }
 
-}
-/* button theme for dark theme */
-.confirmation__button-dark {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  color: "#000000"
-}
-
-.hidden {
-  visibility: hidden; 
- } 
+  .hidden {
+    visibility: hidden;
+  }
 }
 /* MOBILE VERSION */
 @media (max-width: 428px) {
@@ -75,5 +74,49 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+  .confirmation__form-input-light {
+    width: 80%;
+    border-radius: 10px;
+    border: transparent;
+    padding: 5px;
+    border: 2px solid #191919;
+    border-radius: 10px;
+  }
+
+  .confirmation__form-input-dark {
+    width: 80%;
+    border-radius: 10px;
+    border: transparent;
+    padding: 5px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+  }
+
+  /* centers div content */
+  .confirmation__div-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* button theme for light theme */
+  .confirmation__button-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: "#000000";
+  }
+  /* button theme for dark theme */
+  .confirmation__button-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: "#000000";
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 }
