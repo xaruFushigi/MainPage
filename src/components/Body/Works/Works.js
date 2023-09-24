@@ -5,7 +5,6 @@ import Scroll from "./Scroll";
 // CSS
 import "./Works.css";
 // animation
-import StarsCanvas from "../../../Stars";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Works = () => {
@@ -25,7 +24,6 @@ const Works = () => {
       if (response.ok) {
         const data = await response.json();
         setProjects(data.projectsFromDatabase);
-        console.log(data.projectsFromDatabase);
       } else {
         throw new Error("failed to fetch projects");
       }
@@ -53,7 +51,7 @@ const Works = () => {
       return (
         <div className="__card-container" key={index}>
           <Link onClick={OpenProject} style={{ textDecoration: "none" }}>
-            <div className="card">
+            <div className="card growOnHover">
               <img
                 src={`data:image/jpeg;base64,${value.imageOfProject}`}
                 alt="s"
@@ -75,7 +73,6 @@ const Works = () => {
       className="works-container section"
       ref={worksRef}
     >
-      {/* <StarsCanvas /> */}
       <div className="works">
         <h2>CHECK OUT SOME OF MY WORKS</h2>
       </div>
