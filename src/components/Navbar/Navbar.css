@@ -266,6 +266,7 @@
     justify-content: flex-end;
     background: #0009;
     backdrop-filter: blur(10px);
+    z-index: 15;
   }
   /* Base styles for the navigation block */
   .navigation.open {
