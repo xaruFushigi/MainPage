@@ -175,6 +175,15 @@ const Navbar = () => {
                     )}
                   </button>
                 </li>
+                {/* menu button for mobile */}
+                <li className="navigation__item">
+                  <button
+                    className="navigation__toggle"
+                    onClick={toggleIsNavOpenOnClick}
+                  >
+                    {isNavOpen ? <MenuIcon /> : <MenuOpenIcon />}
+                  </button>
+                </li>
               </>
             ) : (
               <>
