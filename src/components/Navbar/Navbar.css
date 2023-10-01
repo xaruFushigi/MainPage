@@ -1,144 +1,146 @@
 /* DESKTOP VERSION */
-/* Base styles for the navigation block */
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-content: flex-end;
-  background: #0009; /* makes background transparent */
-  backdrop-filter: blur(10px); /* makes background blury */
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  transition: width 0.05s linear;
-  z-index: 10;
-}
+@media screen and (min-width: 1024px) {
+  /* Base styles for the navigation block */
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+    background: #0009; /* makes background transparent */
+    backdrop-filter: blur(10px); /* makes background blury */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    transition: width 0.05s linear;
+    z-index: 10;
+  }
 
-/* Styles for the navigation toggle button */
-.navigation__toggle {
-  display: none; /* Hide toggle button by default */
-  /* Styles for the toggle button icon */
-}
-/* LEFT SIDE OF NAVBAR */
-.navigation__list-container-left-side {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-}
-.navigation__list-left-side-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
+  /* Styles for the navigation toggle button */
+  .navigation__toggle {
+    display: none; /* Hide toggle button by default */
+    /* Styles for the toggle button icon */
+  }
+  /* LEFT SIDE OF NAVBAR */
+  .navigation__list-container-left-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .navigation__list-left-side-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
 
-/* RIGHT SIDE OF NAVBAR */
-.navigation__list-container-right-side {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  width: 100%;
-}
+  /* RIGHT SIDE OF NAVBAR */
+  .navigation__list-container-right-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+  }
 
-/* Styles for the navigation list */
-.navigation__list-right-side-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
+  /* Styles for the navigation list */
+  .navigation__list-right-side-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
 
-/* Styles for navigation items <li> */
-.navigation__item {
-  /* Individual navigation item styles */
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  font-weight: 500;
-}
+  /* Styles for navigation items <li> */
+  .navigation__item {
+    /* Individual navigation item styles */
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    font-weight: 500;
+  }
 
-/* Styles for navigation links <a> */
-.navigation__link {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  color: #fff;
-  text-decoration: none;
-  line-height: 40px; /* Set the line height to match the navigation bar's height. help with navbar not increasing in size when font size increases */
-  transition: font-size 0.8s ease-in-out; /* goes back to its size when hover away slowly */
-  /* Link styles */
-}
+  /* Styles for navigation links <a> */
+  .navigation__link {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 40px; /* Set the line height to match the navigation bar's height. help with navbar not increasing in size when font size increases */
+    transition: font-size 0.8s ease-in-out; /* goes back to its size when hover away slowly */
+    /* Link styles */
+  }
 
-.navigation__link:hover {
-  font-size: 24px;
-}
-/* increases size of section when clicked in the navbar  */
-.navigation__link.active {
-  font-size: 24px; /* Set the desired font size */
-  transition: font-size 0.3s ease-in-out;
-}
+  .navigation__link:hover {
+    font-size: 24px;
+  }
+  /* increases size of section when clicked in the navbar  */
+  .navigation__link.active {
+    font-size: 24px; /* Set the desired font size */
+    transition: font-size 0.3s ease-in-out;
+  }
 
-.navigation__logout-button {
-  color: #fff;
-  background: transparent;
-  width: 140px;
-  height: 40px;
-}
+  .navigation__logout-button {
+    color: #fff;
+    background: transparent;
+    width: 140px;
+    height: 40px;
+  }
 
-.navigation__theme-changer-container {
-  border: 2px solid;
-  border-color: #fff;
-  border-radius: 25px;
-  perspective: 25px;
+  .navigation__theme-changer-container {
+    border: 2px solid;
+    border-color: #fff;
+    border-radius: 25px;
+    perspective: 25px;
 
-  &.flipped {
-    .card-front {
-      transform: rotateY(180deg); /* Rotate the front side */
-    }
-    .card-back {
-      transform: rotateY(0); /* Rotate the back side */
+    &.flipped {
+      .card-front {
+        transform: rotateY(180deg); /* Rotate the front side */
+      }
+      .card-back {
+        transform: rotateY(0); /* Rotate the back side */
+      }
     }
   }
-}
 
-.navigation__theme-changer {
-  border-radius: 25px;
-  width: 100%;
-  background-color: #0f0f0f;
+  .navigation__theme-changer {
+    border-radius: 25px;
+    width: 100%;
+    background-color: #0f0f0f;
 
-  &.flipped {
-    .card-front {
-      transform: rotateY(180deg); /* Rotate the front side */
-    }
-    .card-back {
-      transform: rotateY(0); /* Rotate the back side */
+    &.flipped {
+      .card-front {
+        transform: rotateY(180deg); /* Rotate the front side */
+      }
+      .card-back {
+        transform: rotateY(0); /* Rotate the back side */
+      }
     }
   }
-}
 
-.card-front,
-.card-back {
-  /* transition: transform 0.9s ease-in-out; */
-}
+  .card-front,
+  .card-back {
+    /* transition: transform 0.9s ease-in-out; */
+  }
 
-.card-front {
-  transform: rotateY(0deg);
-}
+  .card-front {
+    transform: rotateY(0deg);
+  }
 
-.card-back {
-  transform: rotateY(-180deg);
-  border-radius: 25px;
+  .card-back {
+    transform: rotateY(-180deg);
+    border-radius: 25px;
+  }
 }
 
 /* MOBILE VERSION */
