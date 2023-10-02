@@ -348,9 +348,10 @@
   }
 
   .navigation__logout-button {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    color: #fff;
+    background: transparent;
+    width: 140px;
+    height: 40px;
   }
 
   .navigation__theme-changer-container {
