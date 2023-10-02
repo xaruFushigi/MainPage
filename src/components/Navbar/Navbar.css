@@ -214,10 +214,12 @@
 
   /* Additional styles for mobile view */
   .navigation__link {
-    font-size: 16px;
-    padding: 5px 0;
-    line-height: 1;
-    list-style: none;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 40px;
   }
 
   .navigation__logout-button {
