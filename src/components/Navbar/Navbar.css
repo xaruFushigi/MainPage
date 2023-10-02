@@ -292,7 +292,8 @@
   /* Styles for the navigation toggle button */
   .navigation__toggle {
     display: block; /* Display toggle button for mobile */
-    width: 50px;
+    width: 60px;
+    height: 45px;
     height: 30px;
     padding: 0px;
   }
