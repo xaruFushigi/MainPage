@@ -12,6 +12,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    min-width: 1024px;
     z-index: 100;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
