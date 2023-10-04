@@ -1,5 +1,5 @@
 /* DESKTOP VERSION */
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
   /* Base styles for the navigation block */
   .navigation {
     display: flex;
@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: flex-end;
     background: #0009; /* makes background transparent */
-    backdrop-filter: blur(10px); /* makes background blury */
+    backdrop-filter: blur(10px); /* makes background blurry */
     padding: 10px 20px;
     position: fixed;
     top: 0;
