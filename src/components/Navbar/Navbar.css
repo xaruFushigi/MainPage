@@ -273,7 +273,7 @@
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     transition: width 0.05s linear;
-    z-index: 10;
+    z-index: 16;
   }
 
   /* Styles for the navigation toggle button */
