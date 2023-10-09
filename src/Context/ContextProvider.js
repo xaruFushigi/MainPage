@@ -115,6 +115,18 @@ const ContextProvider = (props) => {
     setIsDarkMode(newTheme);
     localStorage.setItem("mode", newTheme ? "dark" : "light");
   };
+  // sends request to back-end to keep it live every 4 minutes
+  function sendPingRequest() {
+    fetch("https://mainpage-back-end.onrender.com/note")
+      .then((response) => {
+        if (!response.ok) {
+          console.error("Ping request failed:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error("Ping request error:", error);
+      });
+  }
   useEffect(() => {
     handleScroll();
     handleSectionDetection();
@@ -122,6 +134,13 @@ const ContextProvider = (props) => {
     FetchValidToken();
     const savedThemeMode = localStorage.getItem("mode");
     setIsDarkMode(savedThemeMode === "dark"); // Set isDarkMode based on the saved theme mode
+    // Set up a timer to send the ping request every 4 minutes (240,000 milliseconds)
+    const pingInterval = 4 * 60 * 1000; // 4 minutes in millisecos
+    const pingTimer = setInterval(sendPingRequest, pingInterval);
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(pingTimer);
+    };
   }, []);
 
   const contextValues = {
