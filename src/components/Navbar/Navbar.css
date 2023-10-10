@@ -18,6 +18,8 @@
     align-items: flex-end;
     padding: 10px;
     border-radius: 0;
+    position: fixed;
+    top: 0;
   }
 
   /* Styles for the navigation toggle button */
@@ -146,6 +148,7 @@
     align-items: flex-end;
     padding: 10px;
     border-radius: 0;
+    height: 220px;
   }
 
   /* Styles for the navigation toggle button */
