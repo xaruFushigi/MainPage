@@ -139,8 +139,7 @@
     backdrop-filter: blur(10px);
     z-index: 16;
     max-width:926px;
-    height: 90px;
-    margin-top: 20px;
+    height: 50px;
     position: fixed;
     top: 0;
     width:100%;
