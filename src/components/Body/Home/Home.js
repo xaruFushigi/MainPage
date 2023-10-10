@@ -24,7 +24,7 @@ const Main = () => {
       <div className="MainBody-container">
         <div className="MainBody-box">
           <h1 className="MainBody__body-title">
-            Welcome to the Main Page of the Collection of the Projects
+            Welcome
           </h1>
           <h3 className="MainBody__body-text">
             I am a web developer and I use React.js for front-end and for
