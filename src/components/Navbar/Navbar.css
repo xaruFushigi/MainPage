@@ -132,7 +132,7 @@
     justify-content: flex-end;
     background: #0009;
     backdrop-filter: blur(10px);
-    z-index: 15;
+    z-index: 16;
     max-width:926px;
   }
   /* Base styles for the navigation block */
