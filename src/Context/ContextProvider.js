@@ -135,7 +135,7 @@ const ContextProvider = (props) => {
     const savedThemeMode = localStorage.getItem("mode");
     setIsDarkMode(savedThemeMode === "dark"); // Set isDarkMode based on the saved theme mode
     // Set up a timer to send the ping request every 4 minutes (240,000 milliseconds)
-    const pingInterval = 4 * 60 * 1000; // 4 minutes in millisecos
+    const pingInterval = 3 * 60 * 1000; // 4 minutes in millisecos
     const pingTimer = setInterval(sendPingRequest, pingInterval);
     // Clean up the interval when the component unmounts
     return () => {
