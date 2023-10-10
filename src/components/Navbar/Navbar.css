@@ -8,6 +8,7 @@
     backdrop-filter: blur(10px);
     z-index: 16;
     position: fixed; 
+    width: 100%;
     top: 0;
   }
   /* Base styles for the navigation block */
@@ -19,6 +20,7 @@
     padding: 10px;
     border-radius: 0;
     position: fixed;
+    width: 100%;
     top: 0;
   }
 
@@ -139,6 +141,9 @@
     max-width:926px;
     height: 220px;
     margin-top: 20px;
+    position: fixed;
+    top: 0;
+    width:100%;
   }
   /* Base styles for the navigation block */
   .navigation.open {
@@ -149,6 +154,9 @@
     padding: 10px;
     border-radius: 0;
     height: 220px;
+    position: fixed;
+    width:100%;
+    top:0;
   }
 
   /* Styles for the navigation toggle button */
