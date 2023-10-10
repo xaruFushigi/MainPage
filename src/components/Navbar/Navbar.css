@@ -133,6 +133,7 @@
     backdrop-filter: blur(10px);
     z-index: 16;
     max-width:926px;
+    height: 100px
   }
   /* Base styles for the navigation block */
   .navigation.open {
