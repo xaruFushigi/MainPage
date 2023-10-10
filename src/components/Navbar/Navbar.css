@@ -6,7 +6,7 @@
     justify-content: flex-end;
     background: #0009;
     backdrop-filter: blur(10px);
-    z-index: 12;
+    z-index: 16;
   }
   /* Base styles for the navigation block */
   .navigation.open {
